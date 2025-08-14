@@ -357,7 +357,7 @@ body {
 
 .hero-section {
     height: 100vh;
-    background-image: url('fotos/1.jpg');
+    background-image: url('https://github.com/miguel-cortinas/prueba1/blob/main/1.jpg?raw=true');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
