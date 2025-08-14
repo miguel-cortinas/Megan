@@ -573,6 +573,10 @@ section {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+.countdown-section .section-header {
+    margin-bottom: 30px; /* Era 50px por defecto */
+}
+
 /* =================================== */
 /* SECCIÓN RSVP */
 /* =================================== */
@@ -708,6 +712,10 @@ section {
 .rsvp-bg .section-divider {
     background: var(--accent-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rsvp-section .container {
+    padding-top: 60px; /* Añade espacio en la parte superior para empujar el contenido hacia abajo */
 }
 
 /* =================================== */
