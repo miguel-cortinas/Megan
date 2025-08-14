@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis XV Años - Valentina</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Parisienne&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sección de Apertura de Carta -->
+    <div class="letter-opening" id="letter-opening">
+        <div class="letter-container">
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="letter-preview">
+                        <p>Estás invitado/a a mis</p>
+                        <h2>XV Años</h2>
+                        <p class="signature">Valentina</p>
+                    </div>
+                </div>
+            </div>
+            <button class="open-letter-btn" id="open-letter-btn">
+                <span>Abrir Invitación</span>
+                <div class="btn-decoration"></div>
+            </button>
+        </div>
+        <div class="sparkles">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Valentina</div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#invitacion">Invitación</a></li>
+                <li><a href="#contador">Contador</a></li>
+                <li><a href="#confirmacion">RSVP</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#dresscode">Vestuario</a></li>
+                <li><a href="#regalos">Regalos</a></li>
+                <li><a href="#galeria">Galería</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content" id="main-content">
+        
+        <!-- 1. Sección de Inicio -->
+        <section id="inicio" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="hero-subtitle">Mis XV Años</p>
+                    <h1 class="hero-title">Valentina</h1>
+                    <p class="hero-date">01 • Diciembre • 2025</p>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- 2. Mensaje de Invitación -->
+        <section id="invitacion" class="invitation-section">
+            <div class="invitation-bg" style="background-image: url('fotos/2.jpeg');">
+                <div class="section-overlay"></div>
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Una fecha especial</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    <div class="invitation-content">
+                        <p class="invitation-text">
+                            Con gran alegría y emoción, quiero invitarte a celebrar conmigo 
+                            este momento tan especial en mi vida. Mis quince años representan 
+                            una nueva etapa llena de sueños y esperanzas.
+                        </p>
+                        <p class="invitation-text">
+                            Tu presencia hará que esta noche sea aún más memorable. 
+                            ¡Ven a compartir conmigo esta celebración única!
+                        </p>
+                        <div class="signature-container">
+                            <p class="signature">Con cariño, Valentina</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Contador Regresivo -->
+        <section id="contador" class="countdown-section">
+            <div class="countdown-bg" style="background-image: url('fotos/3.jpeg');">
+                <div class="section-overlay dark"></div>
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Faltan:</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    <div id="countdown" class="countdown-container">
+                        <div class="countdown-item">
+                            <span id="days">00</span>
+                            <p>Días</p>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="hours">00</span>
+                            <p>Horas</p>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="minutes">00</span>
+                            <p>Minutos</p>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="seconds">00</span>
+                            <p>Segundos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Confirmación de Asistencia -->
+        <section id="confirmacion" class="rsvp-section">
+            <div class="rsvp-bg" style="background-image: url('fotos/4.jpeg');">
+                <div class="section-overlay"></div>
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Confirmación de Asistencia</h2>
+                        <div class="section-divider"></div>
+                    </div>
+                    <div class="rsvp-content">
+                        <p>Por favor, confirma tu asistencia antes del 25 de noviembre</p>
+                        <div class="rsvp-buttons">
+                            <a href="https://wa.me/1234567890?text=¡Hola! Confirmo mi asistencia a los XV años de Valentina" 
+                               class="rsvp-btn whatsapp" target="_blank">
+                                <span>📱</span>
+                                WhatsApp
+                            </a>
+                            <a href="tel:+1234567890" class="rsvp-btn phone">
+                                <span>📞</span>
+                                Llamar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Ubicaciones -->
+        <section id="ubicacion" class="location-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Ubicación</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="location-content">
+                    <div class="location-card">
+                        <div class="location-icon">⛪</div>
+                        <h3>Ceremonia Religiosa</h3>
+                        <p class="location-name">Iglesia San José</p>
+                        <p class="location-address">Av. Principales #123, Centro</p>
+                        <p class="location-time">6:00 PM</p>
+                        <a href="#" class="location-btn">Ver en Mapa</a>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-icon">🎉</div>
+                        <h3>Fiesta</h3>
+                        <p class="location-name">Salón de Eventos El Jardín</p>
+                        <p class="location-address">Calle de la Celebración #456, Jardines</p>
+                        <p class="location-time">8:00 PM</p>
+                        <a href="#" class="location-btn">Ver en Mapa</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Código de Vestimenta -->
+        <section id="dresscode" class="dresscode-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Código de Vestimenta</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="dresscode-content">
+                    <div class="dresscode-card">
+                        <div class="dresscode-icon">👔</div>
+                        <h3>Hombres</h3>
+                        <p>Traje formal</p>
+                        <p>Colores sugeridos: Negro, azul marino o gris</p>
+                    </div>
+                    <div class="dresscode-card">
+                        <div class="dresscode-icon">👗</div>
+                        <h3>Mujeres</h3>
+                        <p>Vestido de cocktail o largo</p>
+                        <p>Evitar color blanco y rosa pastel</p>
+                    </div>
+                </div>
+                <div class="dresscode-note">
+                    <p><strong>Nota:</strong> Por favor evita usar el color rosa, ya que es el color temático de la quinceañera</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Mesa de Regalos -->
+        <section id="regalos" class="gifts-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Mesa de Regalos</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="gifts-content">
+                    <p class="gifts-intro">Tu presencia es nuestro mejor regalo, pero si deseas obsequiarme algo:</p>
+                    <div class="gifts-options">
+                        <div class="gift-card">
+                            <div class="gift-icon">🎁</div>
+                            <h3>Liverpool</h3>
+                            <p>Evento: XV Años Valentina</p>
+                            <p>Folio: <strong>123456789</strong></p>
+                            <a href="#" class="gift-btn">Ver Lista</a>
+                        </div>
+                        <div class="gift-card">
+                            <div class="gift-icon">💝</div>
+                            <h3>Palacio de Hierro</h3>
+                            <p>Evento: XV Años Valentina</p>
+                            <p>Folio: <strong>987654321</strong></p>
+                            <a href="#" class="gift-btn">Ver Lista</a>
+                        </div>
+                        <div class="gift-card">
+                            <div class="gift-icon">💰</div>
+                            <h3>Aportación</h3>
+                            <p>También puedes hacer una aportación en efectivo</p>
+                            <p>¡Cualquier cantidad es bienvenida!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Galería de Fotos -->
+        <section id="galeria" class="gallery-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Galería de Recuerdos</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400" alt="Foto 1" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=400" alt="Foto 2" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1502635385003-ee1e6a1a742d?w=400" alt="Foto 3" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400" alt="Foto 4" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=400" alt="Foto 5" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400" alt="Foto 6" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>Gracias por acompañarme en este día tan especial</p>
+                <p class="footer-signature">Con amor, Valentina ✨</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
