@@ -23,31 +23,32 @@ function setupLetterOpening() {
     const letterOpening = document.getElementById('letter-opening');
     const mainContent = document.getElementById('main-content');
     const navbar = document.getElementById('navbar');
-    const envelope = document.querySelector('.envelope');
+    // ===== INICIO DE CAMBIOS: Seleccionar el nuevo contenedor del sobre =====
+    const envelopeWrapper = document.getElementById('envelope-wrapper');
+    // ===== FIN DE CAMBIOS =====
 
-    if (openLetterBtn) {
-        // Animación hover del sobre
-        envelope.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05) rotate(2deg)';
-        });
-
-        envelope.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1) rotate(0deg)';
-        });
-
+    if (openLetterBtn && envelopeWrapper) {
         // Click en el botón
         openLetterBtn.addEventListener('click', function() {
             openInvitation(letterOpening, mainContent, navbar);
         });
+        
+        // ===== INICIO DE CAMBIOS: Hacer que el sobre también sea clickeable =====
+        envelopeWrapper.addEventListener('click', function() {
+            openInvitation(letterOpening, mainContent, navbar);
+        });
+        // ===== FIN DE CAMBIOS =====
     }
 }
 
 function openInvitation(letterOpening, mainContent, navbar) {
-    const envelope = document.querySelector('.envelope');
+    // ===== INICIO DE CAMBIOS: Seleccionar el nuevo contenedor del sobre =====
+    const envelopeWrapper = document.getElementById('envelope-wrapper');
+    // ===== FIN DE CAMBIOS =====
     const openLetterBtn = document.getElementById('open-letter-btn');
 
     // Animar sobre
-    envelope.classList.add('opening');
+    envelopeWrapper.classList.add('opening');
     
     // Desvanecer botón
     openLetterBtn.style.opacity = '0';
@@ -67,7 +68,7 @@ function openInvitation(letterOpening, mainContent, navbar) {
             startHeroAnimations();
             
         }, 1000);
-    }, 1000);
+    }, 1000); // El tiempo de espera considera la duración de la nueva animación
 }
 
 function startHeroAnimations() {

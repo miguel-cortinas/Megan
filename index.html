@@ -10,17 +10,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Sección de Apertura de Carta -->
     <div class="letter-opening" id="letter-opening">
         <div class="letter-container">
-            <div class="envelope">
-                <div class="envelope-flap"></div>
-                <div class="envelope-body">
-                    <div class="letter-preview">
-                        <p>Estás invitado/a a mis</p>
-                        <h2>XV Años</h2>
-                        <p class="signature">Valentina</p>
-                    </div>
+            <div class="wrapper" id="envelope-wrapper">
+                <div class="lid one"></div>
+                <div class="lid two"></div>
+                <div class="envelope"></div>
+                <div class="letter">
+                    <p>Estás invitado/a a mis</p>
+                    <h2>XV Años</h2>
+                    <p class="signature">Valentina</p>
                 </div>
             </div>
             <button class="open-letter-btn" id="open-letter-btn">
@@ -37,7 +36,6 @@
         </div>
     </div>
 
-    <!-- Navegación -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-brand">Valentina</div>
@@ -59,10 +57,8 @@
         </div>
     </nav>
 
-    <!-- Contenido Principal -->
     <main class="main-content" id="main-content">
         
-        <!-- 1. Sección de Inicio -->
         <section id="inicio" class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -77,7 +73,6 @@
             </div>
         </section>
 
-        <!-- 2. Mensaje de Invitación -->
         <section id="invitacion" class="invitation-section">
             <div class="invitation-bg" style="background-image: url('fotos/2.jpeg');">
                 <div class="section-overlay"></div>
@@ -104,7 +99,6 @@
             </div>
         </section>
 
-        <!-- 3. Contador Regresivo -->
         <section id="contador" class="countdown-section">
             <div class="countdown-bg" style="background-image: url('fotos/3.jpeg');">
                 <div class="section-overlay dark"></div>
@@ -135,9 +129,8 @@
             </div>
         </section>
 
-        <!-- 4. Confirmación de Asistencia -->
         <section id="confirmacion" class="rsvp-section">
-            <div class="rsvp-bg" style="background-image: url('fotos/4.jpeg');">
+            <div class="rsvp-bg" style="background-image: url('https://github.com/miguel-cortinas/prueba1/blob/8c986bfe26836e7aeed0ec229e3446419827de67/1.jpg');">
                 <div class="section-overlay"></div>
                 <div class="container">
                     <div class="section-header">
@@ -162,7 +155,6 @@
             </div>
         </section>
 
-        <!-- 5. Ubicaciones -->
         <section id="ubicacion" class="location-section">
             <div class="container">
                 <div class="section-header">
@@ -190,7 +182,6 @@
             </div>
         </section>
 
-        <!-- 6. Código de Vestimenta -->
         <section id="dresscode" class="dresscode-section">
             <div class="container">
                 <div class="section-header">
@@ -217,7 +208,6 @@
             </div>
         </section>
 
-        <!-- 7. Mesa de Regalos -->
         <section id="regalos" class="gifts-section">
             <div class="container">
                 <div class="section-header">
@@ -252,7 +242,6 @@
             </div>
         </section>
 
-        <!-- 8. Galería de Fotos -->
         <section id="galeria" class="gallery-section">
             <div class="container">
                 <div class="section-header">
@@ -282,7 +271,6 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="footer">
             <div class="container">
                 <p>Gracias por acompañarme en este día tan especial</p>
