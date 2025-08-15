@@ -535,7 +535,7 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 20px;
     max-width: 600px;
-    margin: 150px auto;
+    margin: 10px auto;
     position: relative;
     z-index: 2;
 }
