@@ -1,6 +1,6 @@
 // Variables globales
 let countdownInterval = null;
-const eventDate = new Date("December 1, 2025 18:00:00").getTime();
+const eventDate = new Date("September 19, 2025 18:00:00").getTime();
 
 // Inicialización cuando la página carga
 window.addEventListener('load', function() {
