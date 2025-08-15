@@ -366,6 +366,7 @@ body {
     justify-content: center;
     position: relative;
     text-align: center;
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .hero-overlay {
@@ -432,7 +433,8 @@ body {
 /* =================================== */
 
 section {
-    padding: 0; /* --- CAMBIO AQUÍ: Eliminado el padding general para que las secciones se junten --- */
+    padding: 0; /* Eliminado el padding general */
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .section-header {
@@ -461,7 +463,8 @@ section {
 
 .invitation-section {
     position: relative;
-    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
+    padding: 0; /* CAMBIO: Sin padding */
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .invitation-bg {
@@ -473,7 +476,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: center;
-    margin-top: 0; /* --- CAMBIO AQUÍ: Eliminar el margen superior --- */
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .invitation-content {
@@ -514,7 +517,8 @@ section {
 
 .countdown-section {
     position: relative;
-    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
+    padding: 0; /* CAMBIO: Sin padding */
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .countdown-bg {
@@ -526,7 +530,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: flex-start;
-    margin-top: 0; /* --- CAMBIO AQUÍ: Eliminar el margen superior --- */
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .countdown-section .section-header h2 {
@@ -584,7 +588,8 @@ section {
 
 .rsvp-section {
     position: relative;
-    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
+    padding: 0; /* CAMBIO: Sin padding */
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .rsvp-bg {
@@ -596,7 +601,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: center;
-    margin-top: 0; /* --- CAMBIO AQUÍ: Eliminar el margen superior --- */
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .rsvp-content {
@@ -706,7 +711,8 @@ section {
 
 .location-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
+    padding: 80px 0;
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .location-content {
@@ -780,7 +786,8 @@ section {
 
 .dresscode-section {
     background: var(--white);
-    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
+    padding: 80px 0;
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .dresscode-content {
@@ -841,7 +848,8 @@ section {
 
 .gifts-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
+    padding: 80px 0;
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .gifts-intro {
@@ -921,7 +929,8 @@ section {
 
 .gallery-section {
     background: var(--white);
-    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
+    padding: 80px 0;
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .gallery-grid {
@@ -982,6 +991,7 @@ section {
     color: var(--white);
     text-align: center;
     padding: 40px 0;
+    margin: 0; /* CAMBIO: Sin margen */
 }
 
 .footer p {
@@ -1134,8 +1144,12 @@ section {
         font-size: 1em;
     }
 
-    section {
-        padding: 60px 0; /* --- CAMBIO AQUÍ: Ajustado padding para móviles --- */
+    /* CAMBIO: Ajuste de padding para móviles en secciones con fondos */
+    .location-section,
+    .dresscode-section,
+    .gifts-section,
+    .gallery-section {
+        padding: 60px 0;
     }
 
     .hero-section,
@@ -1234,6 +1248,19 @@ section {
         gap: 20px;
     }
 
+    /* CAMBIO: Ajuste de padding para móviles pequeños */
+    .location-section,
+    .dresscode-section,
+    .gifts-section,
+    .gallery-section {
+        padding: 50px 0;
+    }
+
+    .invitation-bg,
+    .countdown-bg,
+    .rsvp-bg {
+        padding: 50px 0;
+    }
 
     .countdown-container {
         grid-template-columns: repeat(2, 1fr);
