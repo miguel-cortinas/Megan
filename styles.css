@@ -67,7 +67,7 @@ body {
 .wrapper {
     height: 200px;
     width: 300px;
-    background-color: #3760C9;
+    background-color: #1758fc;
     position: relative;
     display: flex;
     justify-content: center;
@@ -90,7 +90,7 @@ body {
 
 /* Tapa cerrada */
 .lid.one {
-    border-top: 100px solid #3B4049;
+    border-top: 100px solid #658CED;
     transform: rotateX(0deg);
     z-index: 3;
     transition-delay: 0.75s;
@@ -98,7 +98,7 @@ body {
 
 /* Tapa abierta */
 .lid.two {
-    border-top: 100px solid #3760C9;
+    border-top: 100px solid #5574c1;
     transform: rotateX(90deg);
     z-index: 1;
     transition-delay: 0.5s;
