@@ -90,7 +90,7 @@ body {
 
 /* Tapa cerrada */
 .lid.one {
-    border-top: 100px solid #1f57e7;
+    border-top: 100px solid #3f63bc;
     transform: rotateX(0deg);
     z-index: 3;
     transition-delay: 0.75s;
@@ -98,7 +98,7 @@ body {
 
 /* Tapa abierta */
 .lid.two {
-    border-top: 100px solid #3760C9;
+    border-top: 100px solid #8ec7ea;
     transform: rotateX(90deg);
     z-index: 1;
     transition-delay: 0.5s;
