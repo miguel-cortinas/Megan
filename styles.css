@@ -593,7 +593,7 @@ section {
     padding: 80px 0;
     min-height: 70vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .rsvp-content {
@@ -602,6 +602,7 @@ section {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    margin-top: 150px;
 }
 
 .rsvp-content p {
