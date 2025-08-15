@@ -1,13 +1,13 @@
 /* Variables CSS */
 :root {
-    --primary-color: #d41046;
-    --secondary-color: #ca0b47;
+    --primary-color: #133C87;
+    --secondary-color: #133C87;
     --accent-color: #FFD700;
     --text-color: #333;
     --text-light: #666;
     --white: #fff;
     --black: #000;
-    --gradient: linear-gradient(135deg, #d41046 0%, #ca0b47 50%, #b50448 100%);
+    --gradient: linear-gradient(135deg, #658EDB 0%, #658EDB 50%, #658EDB 100%);
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --border-radius: 15px;
 }
