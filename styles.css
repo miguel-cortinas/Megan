@@ -654,7 +654,7 @@ section {
 }
 
 .rsvp-section .container {
-    padding-top: 80px; /* Añade espacio en la parte superior para empujar el contenido hacia abajo */
+    padding-top: 500px; /* Añade espacio en la parte superior para empujar el contenido hacia abajo */
 }
 
 .section-overlay.dark {
@@ -700,7 +700,7 @@ section {
 }
 
 .rsvp-section .container {
-    padding-top: 1px; /* Añade espacio en la parte superior para empujar el contenido hacia abajo */
+    padding-top: 500px; /* Añade espacio en la parte superior para empujar el contenido hacia abajo */
 }
 
 /* =================================== */
