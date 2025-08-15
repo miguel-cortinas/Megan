@@ -90,7 +90,7 @@ body {
 
 /* Tapa cerrada */
 .lid.one {
-    border-top: 100px solid #658ced;
+    border-top: 100px solid #1f57e7;
     transform: rotateX(0deg);
     z-index: 3;
     transition-delay: 0.75s;
