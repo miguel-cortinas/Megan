@@ -411,6 +411,37 @@ const lightboxStyles = `
     }
 `;
 
+// Carrusel arrastrable con mouse (desktop)
+const galleryGrid = document.querySelector('.gallery-grid');
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+galleryGrid.addEventListener('mousedown', e => {
+    isDown = true;
+    galleryGrid.classList.add('dragging');
+    startX = e.pageX - galleryGrid.offsetLeft;
+    scrollLeft = galleryGrid.scrollLeft;
+});
+
+galleryGrid.addEventListener('mouseleave', () => {
+    isDown = false;
+});
+
+galleryGrid.addEventListener('mouseup', () => {
+    isDown = false;
+});
+
+galleryGrid.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - galleryGrid.offsetLeft;
+    const walk = (x - startX) * 2; // velocidad del arrastre
+    galleryGrid.scrollLeft = scrollLeft - walk;
+});
+
+
 // Agregar estilos al head
 const styleSheet = document.createElement('style');
 styleSheet.textContent = lightboxStyles;
