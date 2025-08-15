@@ -576,7 +576,7 @@ section {
 }
 
 .countdown-section .section-header {
-    margin-bottom: 1000px; /* Era 50px por defecto */
+    margin-bottom: 10px; /* Era 50px por defecto */
 }
 
 /* =================================== */
