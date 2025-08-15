@@ -1,5 +1,7 @@
 // Variables globales
 let countdownInterval = null;
+let backgroundMusic = null;
+let musicInitialized = false;
 const eventDate = new Date("September 19, 2025 18:00:00").getTime();
 
 // Inicialización cuando la página carga
@@ -12,6 +14,141 @@ function initializeApp() {
     setupNavigation();
     setupScrollAnimations();
     setupCountdown();
+    setupMusicBubble(); // Agregar esta línea
+}
+
+// =================================== 
+// BURBUJA DE MÚSICA
+// ===================================
+
+function setupMusicBubble() {
+    const musicBubble = document.getElementById('music-bubble');
+    const musicToggle = document.getElementById('music-toggle');
+    const backgroundMusic = document.getElementById('background-music');
+    
+    if (!musicBubble || !musicToggle || !backgroundMusic) {
+        console.log('Elementos de música no encontrados');
+        return;
+    }
+
+    // Mostrar la burbuja después de abrir la invitación
+    setTimeout(() => {
+        musicBubble.classList.add('show');
+    }, 3000);
+
+    // Click handler para toggle de música
+    musicToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMusic();
+    });
+
+    // También hacer que toda la burbuja sea clickeable
+    musicBubble.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleMusic();
+    });
+
+    // Configurar el audio
+    backgroundMusic.volume = 0.3; // Volumen al 30%
+    backgroundMusic.preload = 'auto';
+}
+
+function toggleMusic() {
+    const musicBubble = document.getElementById('music-bubble');
+    const backgroundMusic = document.getElementById('background-music');
+    
+    if (!backgroundMusic || !musicBubble) return;
+
+    if (backgroundMusic.paused) {
+        // Reproducir música
+        backgroundMusic.play().then(() => {
+            musicBubble.classList.add('playing');
+            console.log('Música iniciada');
+        }).catch(error => {
+            console.error('Error al reproducir música:', error);
+            // Si no se puede reproducir, mostrar mensaje elegante al usuario
+            showAutoplayMessage();
+        });
+    } else {
+        // Pausar música
+        backgroundMusic.pause();
+        musicBubble.classList.remove('playing');
+        console.log('Música pausada');
+    }
+}
+
+function showAutoplayMessage() {
+    // Crear notificación elegante para invitar a activar la música
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        background: linear-gradient(135deg, #133C87, #658ced);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 14px;
+        z-index: 2000;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        max-width: 250px;
+        font-family: 'Playfair Display', serif;
+    `;
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 18px;">🎵</span>
+            <div>
+                <div style="font-weight: bold; margin-bottom: 3px;">¡Música disponible!</div>
+                <div style="font-size: 12px; opacity: 0.9;">Haz clic para activar</div>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animar entrada
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateY(0)';
+    }, 100);
+    
+    // Click para activar música
+    notification.addEventListener('click', function() {
+        const backgroundMusic = document.getElementById('background-music');
+        const musicBubble = document.getElementById('music-bubble');
+        
+        if (backgroundMusic) {
+            backgroundMusic.play().then(() => {
+                musicBubble.classList.add('playing');
+                // Ocultar notificación
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            });
+        }
+    });
+    
+    // Auto-ocultar después de 8 segundos
+    setTimeout(() => {
+        if (document.body.contains(notification)) {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
+            }, 300);
+        }
+    }, 8000);
 }
 
 // =================================== 
@@ -23,9 +160,7 @@ function setupLetterOpening() {
     const letterOpening = document.getElementById('letter-opening');
     const mainContent = document.getElementById('main-content');
     const navbar = document.getElementById('navbar');
-    // ===== INICIO DE CAMBIOS: Seleccionar el nuevo contenedor del sobre =====
     const envelopeWrapper = document.getElementById('envelope-wrapper');
-    // ===== FIN DE CAMBIOS =====
 
     if (openLetterBtn && envelopeWrapper) {
         // Click en el botón
@@ -33,18 +168,15 @@ function setupLetterOpening() {
             openInvitation(letterOpening, mainContent, navbar);
         });
         
-        // ===== INICIO DE CAMBIOS: Hacer que el sobre también sea clickeable =====
+        // Hacer que el sobre también sea clickeable
         envelopeWrapper.addEventListener('click', function() {
             openInvitation(letterOpening, mainContent, navbar);
         });
-        // ===== FIN DE CAMBIOS =====
     }
 }
 
 function openInvitation(letterOpening, mainContent, navbar) {
-    // ===== INICIO DE CAMBIOS: Seleccionar el nuevo contenedor del sobre =====
     const envelopeWrapper = document.getElementById('envelope-wrapper');
-    // ===== FIN DE CAMBIOS =====
     const openLetterBtn = document.getElementById('open-letter-btn');
 
     // Animar sobre
@@ -67,8 +199,30 @@ function openInvitation(letterOpening, mainContent, navbar) {
             // Iniciar animaciones de entrada
             startHeroAnimations();
             
+            // Mostrar burbuja de música y reproducir automáticamente
+            setTimeout(() => {
+                const musicBubble = document.getElementById('music-bubble');
+                const backgroundMusic = document.getElementById('background-music');
+                
+                if (musicBubble) {
+                    musicBubble.classList.add('show');
+                }
+                
+                // Intentar reproducir música automáticamente
+                if (backgroundMusic) {
+                    backgroundMusic.play().then(() => {
+                        console.log('Música iniciada automáticamente');
+                        musicBubble.classList.add('playing');
+                    }).catch(error => {
+                        console.log('Autoplay bloqueado por el navegador:', error);
+                        // Si no se puede reproducir automáticamente, mostrar un mensaje sutil
+                        showAutoplayMessage();
+                    });
+                }
+            }, 1500);
+            
         }, 1000);
-    }, 1000); // El tiempo de espera considera la duración de la nueva animación
+    }, 1000);
 }
 
 function startHeroAnimations() {
@@ -411,37 +565,6 @@ const lightboxStyles = `
     }
 `;
 
-// Carrusel arrastrable con mouse (desktop)
-const galleryGrid = document.querySelector('.gallery-grid');
-
-let isDown = false;
-let startX;
-let scrollLeft;
-
-galleryGrid.addEventListener('mousedown', e => {
-    isDown = true;
-    galleryGrid.classList.add('dragging');
-    startX = e.pageX - galleryGrid.offsetLeft;
-    scrollLeft = galleryGrid.scrollLeft;
-});
-
-galleryGrid.addEventListener('mouseleave', () => {
-    isDown = false;
-});
-
-galleryGrid.addEventListener('mouseup', () => {
-    isDown = false;
-});
-
-galleryGrid.addEventListener('mousemove', e => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - galleryGrid.offsetLeft;
-    const walk = (x - startX) * 2; // velocidad del arrastre
-    galleryGrid.scrollLeft = scrollLeft - walk;
-});
-
-
 // Agregar estilos al head
 const styleSheet = document.createElement('style');
 styleSheet.textContent = lightboxStyles;
@@ -451,5 +574,34 @@ document.head.appendChild(styleSheet);
 window.addEventListener('beforeunload', function() {
     if (countdownInterval) {
         clearInterval(countdownInterval);
+    }
+});
+
+// Función para manejar autoplay en móviles y mejorar compatibilidad
+document.addEventListener('DOMContentLoaded', function() {
+    // Preparar audio para autoplay
+    const backgroundMusic = document.getElementById('background-music');
+    if (backgroundMusic) {
+        // Configurar el audio para mejor compatibilidad
+        backgroundMusic.volume = 0.4;
+        backgroundMusic.muted = false;
+        
+        // Precargar el audio
+        backgroundMusic.load();
+        
+        // Intentar "calentar" el contexto de audio en la primera interacción
+        const enableAudio = () => {
+            // Crear y reproducir un audio silencioso para activar el contexto
+            backgroundMusic.play().then(() => {
+                backgroundMusic.pause();
+                backgroundMusic.currentTime = 0;
+            }).catch(() => {
+                // Si falla, no hacer nada
+            });
+        };
+        
+        // Escuchar la primera interacción para preparar el audio
+        document.addEventListener('click', enableAudio, { once: true });
+        document.addEventListener('touchstart', enableAudio, { once: true });
     }
 });
