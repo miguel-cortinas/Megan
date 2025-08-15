@@ -432,7 +432,7 @@ body {
 /* =================================== */
 
 section {
-    padding: 10px 0;
+    padding: 0; /* --- CAMBIO AQUÍ: Eliminado el padding general para que las secciones se junten --- */
 }
 
 .section-header {
@@ -461,6 +461,7 @@ section {
 
 .invitation-section {
     position: relative;
+    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
 }
 
 .invitation-bg {
@@ -472,7 +473,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: center;
-    margin-top: 0;
+    margin-top: 0; /* --- CAMBIO AQUÍ: Eliminar el margen superior --- */
 }
 
 .invitation-content {
@@ -513,6 +514,7 @@ section {
 
 .countdown-section {
     position: relative;
+    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
 }
 
 .countdown-bg {
@@ -524,7 +526,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: flex-start;
-    margin-top: 0px;
+    margin-top: 0; /* --- CAMBIO AQUÍ: Eliminar el margen superior --- */
 }
 
 .countdown-section .section-header h2 {
@@ -582,6 +584,7 @@ section {
 
 .rsvp-section {
     position: relative;
+    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
 }
 
 .rsvp-bg {
@@ -593,6 +596,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: center;
+    margin-top: 0; /* --- CAMBIO AQUÍ: Eliminar el margen superior --- */
 }
 
 .rsvp-content {
@@ -702,6 +706,7 @@ section {
 
 .location-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
 }
 
 .location-content {
@@ -775,6 +780,7 @@ section {
 
 .dresscode-section {
     background: var(--white);
+    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
 }
 
 .dresscode-content {
@@ -835,6 +841,7 @@ section {
 
 .gifts-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
 }
 
 .gifts-intro {
@@ -914,6 +921,7 @@ section {
 
 .gallery-section {
     background: var(--white);
+    padding: 80px 0; /* --- CAMBIO AQUÍ: Añadido padding individual a la sección --- */
 }
 
 .gallery-grid {
@@ -1127,7 +1135,7 @@ section {
     }
 
     section {
-        padding: 60px 0;
+        padding: 60px 0; /* --- CAMBIO AQUÍ: Ajustado padding para móviles --- */
     }
 
     .hero-section,
