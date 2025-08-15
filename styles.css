@@ -512,7 +512,6 @@ section {
 
 .countdown-section {
     position: relative;
-    margin-top: 10px;
 }
 
 .countdown-bg {
@@ -523,7 +522,7 @@ section {
     padding: 80px 0;
     min-height: 70vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .countdown-section .section-header h2 {
