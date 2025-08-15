@@ -523,7 +523,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: flex-start;
-    margin-top: 200px;
+    margin-top: 10px;
 }
 
 .countdown-section .section-header h2 {
