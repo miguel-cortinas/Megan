@@ -7,7 +7,7 @@
     --text-light: #666;
     --white: #fff;
     --black: #000;
-    --gradient: linear-gradient(135deg, #1d64e6 0%, #1d64e6 50%, #1d64e6 100%);
+    --gradient: linear-gradient(135deg, #003B67 0%, #003B67 50%, #003B67 100%);
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --border-radius: 15px;
 }
