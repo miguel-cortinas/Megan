@@ -7,7 +7,7 @@
     --text-light: #666;
     --white: #fff;
     --black: #000;
-    --gradient: linear-gradient(135deg, #658EDB 0%, #658EDB 50%, #658EDB 100%);
+    --gradient: linear-gradient(135deg, #1d64e6 0%, #1d64e6 50%, #1d64e6 100%);
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     --border-radius: 15px;
 }
@@ -67,7 +67,7 @@ body {
 .wrapper {
     height: 200px;
     width: 300px;
-    background-color: #1758fc;
+    background-color: #658CED;
     position: relative;
     display: flex;
     justify-content: center;
