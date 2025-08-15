@@ -530,7 +530,6 @@ section {
 .countdown-section .section-header h2 {
     color: var(--accent-color);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    padding-top: 70px;
 }
 
 .countdown-container {
@@ -577,7 +576,7 @@ section {
 }
 
 .countdown-section .section-header {
-    margin-bottom: 50px; /* Era 50px por defecto */
+    margin-bottom: 100px; /* Era 50px por defecto */
 }
 
 /* =================================== */
