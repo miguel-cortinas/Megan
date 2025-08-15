@@ -574,7 +574,7 @@ section {
 }
 
 .countdown-section .section-header {
-    margin-bottom: 550px; /* Era 50px por defecto */
+    margin-bottom: 50px; /* Era 50px por defecto */
 }
 
 /* =================================== */
@@ -696,7 +696,7 @@ section {
 }
 
 .rsvp-section .container {
-    padding-top: 10px; /* Añade espacio en la parte superior para empujar el contenido hacia abajo */
+    padding-top: 50px; /* Añade espacio en la parte superior para empujar el contenido hacia abajo */
 }
 
 /* =================================== */
