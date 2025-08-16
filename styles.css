@@ -443,6 +443,7 @@ section {
 }
 
 .section-header h2 {
+    text-align: center;
     font-family: 'Parisienne', cursive;
     font-size: clamp(2.5rem, 6vw, 3.5rem);
     color: var(--accent-color);
