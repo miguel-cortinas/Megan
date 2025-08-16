@@ -949,6 +949,256 @@ section {
 }
 
 /* =================================== */
+/* SECCIÓN DEDICATORIA A LOS PADRES */
+/* =================================== */
+
+.dedication-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #fff 50%, #f8f9fa 100%);
+    padding: 80px 0;
+    margin: 0;
+    position: relative;
+}
+
+.dedication-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(19, 60, 135, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.dedication-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.dedication-text {
+    text-align: center;
+}
+
+.dedication-intro {
+    font-size: 1.3em;
+    color: var(--text-color);
+    margin-bottom: 40px;
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.dedication-intro::before,
+.dedication-intro::after {
+    content: '"';
+    font-size: 3em;
+    color: var(--accent-color);
+    font-family: 'Playfair Display', serif;
+    opacity: 0.6;
+    position: absolute;
+    top: -10px;
+}
+
+.dedication-intro::before {
+    left: -30px;
+}
+
+.dedication-intro::after {
+    right: -30px;
+    transform: scaleX(-1);
+}
+
+.parents-dedication {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 50px 0;
+    flex-wrap: wrap;
+}
+
+.parent-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 4px 15px rgba(19, 60, 135, 0.1);
+    border: 2px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    min-width: 280px;
+    max-width: 320px;
+}
+
+.parent-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.parent-card:hover::before {
+    opacity: 1;
+    animation: shimmer 1.5s ease;
+}
+
+.parent-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.12),
+        0 8px 25px rgba(255, 215, 0, 0.2);
+    border-color: var(--accent-color);
+}
+
+.parent-icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    display: block;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.parent-card h3 {
+    color: var(--primary-color);
+    font-size: 1.4em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+.parent-card p {
+    color: var(--text-light);
+    font-style: italic;
+    font-size: 1.1em;
+    position: relative;
+    z-index: 2;
+}
+
+.dedication-heart {
+    font-size: 2em;
+    color: var(--accent-color);
+    animation: pulse 2s ease-in-out infinite;
+    text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+.dedication-message {
+    font-size: 1.2em;
+    color: var(--text-color);
+    line-height: 1.8;
+    margin: 40px auto;
+    max-width: 650px;
+    font-style: italic;
+    text-align: center;
+    position: relative;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+    border-radius: 15px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.dedication-signature {
+    margin-top: 40px;
+}
+
+.dedication-signature p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8em;
+    color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* Animaciones para la sección */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive para la dedicatoria */
+@media (max-width: 768px) {
+    .dedication-section {
+        padding: 60px 0;
+    }
+    
+    .parents-dedication {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .parent-card {
+        min-width: 250px;
+        max-width: 300px;
+        padding: 25px 20px;
+    }
+    
+    .dedication-intro::before,
+    .dedication-intro::after {
+        display: none;
+    }
+    
+    .dedication-intro {
+        font-size: 1.2em;
+        padding: 0 10px;
+    }
+    
+    .dedication-message {
+        font-size: 1.1em;
+        padding: 20px;
+        margin: 30px auto;
+    }
+    
+    .dedication-heart {
+        font-size: 1.5em;
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .parent-card {
+        min-width: 220px;
+        max-width: 280px;
+    }
+    
+    .parent-card h3 {
+        font-size: 1.2em;
+    }
+    
+    .dedication-signature p {
+        font-size: 1.5em;
+    }
+}
+
+/* =================================== */
 /* SECCIÓN GALERÍA */
 /* =================================== */
 
