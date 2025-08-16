@@ -1483,84 +1483,260 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 40px 0;
+    margin: 60px 0;
     padding: 0 20px;
-}
-
-.separator-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-    opacity: 0.3;
-    max-width: 200px;
-}
-
-.separator-ornament {
-    margin: 0 20px;
-    position: relative;
-}
-
-.separator-ornament > div {
-    font-size: 1.5em;
-    color: var(--primary-color);
-    background: var(--white);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border: 2px solid rgba(19, 60, 135, 0.1);
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.separator-ornament > div::before {
+/* Efecto de partículas flotantes */
+.section-separator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatingParticle 4s ease-in-out infinite;
+    transform: translate(-50%, -50%);
+}
+
+.section-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    width: 3px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: floatingParticle 5s ease-in-out infinite reverse;
+    transform: translate(50%, -50%);
+}
+
+.separator-line {
+    flex: 1;
+    height: 2px;
+    position: relative;
+    max-width: 250px;
+    overflow: hidden;
+}
+
+/* Línea base con gradiente elegante */
+.separator-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(19, 60, 135, 0.1) 20%, 
+        var(--primary-color) 50%, 
+        rgba(19, 60, 135, 0.1) 80%, 
+        transparent 100%);
+    border-radius: 1px;
+}
+
+/* Efecto de brillo que se mueve */
+.separator-line::after {
     content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
-    transition: left 0.6s ease;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.6) 50%, 
+        transparent 100%);
+    border-radius: 1px;
+    animation: lineShimmer 6s ease-in-out infinite;
 }
 
-.separator-ornament:hover > div::before {
-    left: 100%;
+.separator-ornament {
+    margin: 0 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.separator-ornament > div {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.1),
+        0 4px 10px rgba(19, 60, 135, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 3px solid rgba(19, 60, 135, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: gentlePulse 4s ease-in-out infinite;
+}
+
+/* Efecto de cristal en el ornamento */
+.separator-ornament > div::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, 
+        transparent 0deg, 
+        rgba(255, 215, 0, 0.1) 45deg, 
+        rgba(255, 215, 0, 0.3) 90deg, 
+        rgba(255, 215, 0, 0.1) 135deg, 
+        transparent 180deg,
+        transparent 360deg);
+    opacity: 0;
+    transition: all 0.6s ease;
+    animation: rotateGlow 8s linear infinite;
+}
+
+/* Brillo interior sutil */
+.separator-ornament > div::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.8) 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        transparent 100%);
+    border-radius: 50%;
+    opacity: 0.7;
 }
 
 .separator-ornament:hover > div {
-    transform: scale(1.1) rotate(10deg);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transform: scale(1.15) rotateY(15deg);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.2),
+        0 8px 20px rgba(19, 60, 135, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.9);
     border-color: var(--accent-color);
+    color: var(--accent-color);
 }
 
-/* Animación sutil de entrada */
+.separator-ornament:hover > div::before {
+    opacity: 1;
+}
+
+/* Imagen dentro del ornamento con efecto elegante */
+.separator-ornament img {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: all 0.4s ease;
+}
+
+.separator-ornament:hover img {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) 
+            brightness(1.1) 
+            saturate(1.2);
+    transform: scale(1.1);
+}
+
+/* Animación sutil de entrada con efecto stagger */
 .section-separator {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInSeparator 1s ease forwards;
+    transform: translateY(30px);
+    animation: fadeInSeparatorAdvanced 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-@keyframes fadeInSeparator {
-    to {
+.section-separator:nth-of-type(odd) {
+    animation-delay: 0.1s;
+}
+
+.section-separator:nth-of-type(even) {
+    animation-delay: 0.2s;
+}
+
+/* Keyframes para las animaciones */
+@keyframes fadeInSeparatorAdvanced {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateY(-5px) scale(1.02);
+    }
+    100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes lineShimmer {
+    0%, 100% {
+        left: -100%;
+        opacity: 0;
+    }
+    50% {
+        left: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes floatingParticle {
+    0%, 100% {
+        transform: translate(-50%, -50%) translateY(0px);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-15px);
+        opacity: 0.9;
+    }
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        box-shadow: 
+            0 8px 25px rgba(0, 0, 0, 0.1),
+            0 4px 10px rgba(19, 60, 135, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+    50% {
+        box-shadow: 
+            0 12px 35px rgba(0, 0, 0, 0.15),
+            0 6px 15px rgba(19, 60, 135, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
 
 /* Responsive para separadores */
 @media (max-width: 768px) {
     .section-separator {
-        margin: 30px 0;
+        margin: 40px 0;
         padding: 0 15px;
     }
     
     .separator-line {
-        max-width: 100px;
+        max-width: 120px;
     }
     
     .separator-ornament {
@@ -1568,15 +1744,20 @@ section {
     }
     
     .separator-ornament > div {
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
         font-size: 1.2em;
+    }
+    
+    .separator-ornament img {
+        width: 20px;
+        height: 20px;
     }
 }
 
 @media (max-width: 480px) {
     .section-separator {
-        margin: 20px 0;
+        margin: 30px 0;
     }
     
     .separator-line {
@@ -1588,8 +1769,13 @@ section {
     }
     
     .separator-ornament > div {
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         font-size: 1em;
+    }
+    
+    .separator-ornament img {
+        width: 18px;
+        height: 18px;
     }
 }
