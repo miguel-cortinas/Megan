@@ -453,7 +453,7 @@ section {
 .section-divider {
     width: 80px;
     height: 3px;
-    background: var(--gradient);
+    background: var(--accent-color);  /* ← CAMBIO 2: Era var(--gradient) */
     margin: 0 auto;
     border-radius: 2px;
 }
