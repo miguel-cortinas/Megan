@@ -443,11 +443,14 @@ section {
 }
 
 .section-header h2 {
-    text-align: center;
-    font-family: 'Parisienne', cursive;
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
-    color: var(--accent-color);
-    margin-bottom: 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8em;
+    color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
 }
 
 .section-divider {
