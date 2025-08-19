@@ -12,7 +12,7 @@ window.addEventListener('load', function() {
 function initializeApp() {
     setupLetterOpening();
     setupNavigation();
-    setupScrollAnimations();
+    // setupScrollAnimations();
     setupCountdown();
     setupMusicBubble(); // Agregar esta línea
     initializeGalleryImproved();
