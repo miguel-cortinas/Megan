@@ -550,6 +550,7 @@ section {
     text-align: center;
     position: relative;
     z-index: 2;
+    margin-top: 25vh;
 }
 
 .invitation-text {
