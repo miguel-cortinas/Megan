@@ -16,6 +16,7 @@ function initializeApp() {
     setupCountdown();
     setupMusicBubble(); // Agregar esta línea
     initializeGalleryImproved();
+    initializeSectionAnimations();
 }
 
 // =================================== 
@@ -1225,3 +1226,685 @@ document.head.appendChild(additionalStyleSheet);
 window.addEventListener('beforeunload', function() {
     stopGalleryAutoPlay();
 });
+
+// =================================== 
+// ANIMACIONES DE NAVEGACIÓN ENTRE SECCIONES
+// ===================================
+
+// Variables para el control de animaciones
+let currentSection = 0;
+let isAnimating = false;
+let sectionObserver = null;
+let parallaxElements = [];
+
+// Inicializar animaciones de navegación
+function setupSectionAnimations() {
+    setupSmoothScroll();
+    setupParallaxEffect();
+    setupSectionTransitions();
+    setupProgressIndicator();
+    setupActiveNavigation();
+    setupKeyboardNavigation();
+}
+
+// =================================== 
+// SMOOTH SCROLL MEJORADO
+// ===================================
+
+function setupSmoothScroll() {
+    const navLinks = document.querySelectorAll('.nav-menu a, a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (isAnimating) return;
+            
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                isAnimating = true;
+                smoothScrollToSection(targetSection);
+            }
+        });
+    });
+}
+
+function smoothScrollToSection(targetSection) {
+    // Calcular la posición del navbar
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+    
+    // Posición objetivo
+    const targetPosition = targetSection.offsetTop - navbarHeight;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = Math.min(Math.abs(distance) / 2, 1500); // Máximo 1.5s
+    
+    // Función de easing personalizada
+    const easeInOutCubic = (t) => {
+        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    };
+    
+    let start = null;
+    
+    const step = (timestamp) => {
+        if (!start) start = timestamp;
+        
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, startPosition + distance * ease);
+        
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            isAnimating = false;
+            // Trigger entrance animations for the target section
+            triggerSectionEntranceAnimations(targetSection);
+        }
+    };
+    
+    requestAnimationFrame(step);
+}
+
+// =================================== 
+// EFECTOS PARALLAX
+// ===================================
+
+function setupParallaxEffect() {
+    parallaxElements = [
+        {
+            element: document.querySelector('.hero-section'),
+            speed: 0.5,
+            type: 'background'
+        },
+        {
+            element: document.querySelector('.invitation-bg'),
+            speed: 0.3,
+            type: 'background'
+        },
+        {
+            element: document.querySelector('.countdown-bg'),
+            speed: 0.4,
+            type: 'background'
+        },
+        {
+            element: document.querySelector('.rsvp-bg'),
+            speed: 0.3,
+            type: 'background'
+        }
+    ].filter(item => item.element !== null);
+    
+    // Parallax suave en scroll
+    const handleParallax = () => {
+        if (isAnimating) return;
+        
+        const scrolled = window.pageYOffset;
+        
+        parallaxElements.forEach(item => {
+            if (isElementInViewport(item.element)) {
+                const elementTop = item.element.offsetTop;
+                const elementHeight = item.element.offsetHeight;
+                const windowHeight = window.innerHeight;
+                
+                // Calcular el offset parallax
+                const yPos = -(scrolled - elementTop) * item.speed;
+                
+                if (item.type === 'background') {
+                    item.element.style.transform = `translateY(${yPos}px)`;
+                } else {
+                    item.element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                }
+            }
+        });
+    };
+    
+    // Throttle para mejor performance
+    let ticking = false;
+    const requestTick = () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleParallax();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
+}
+
+// =================================== 
+// TRANSICIONES ENTRE SECCIONES
+// ===================================
+
+function setupSectionTransitions() {
+    const sections = document.querySelectorAll('section, .hero-section');
+    
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '-50px 0px -50px 0px'
+    };
+    
+    sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-active');
+                triggerSectionEntranceAnimations(entry.target);
+                updateCurrentSection(entry.target);
+            } else {
+                entry.target.classList.remove('section-active');
+            }
+        });
+    }, observerOptions);
+    
+    sections.forEach(section => {
+        section.classList.add('section-fade');
+        sectionObserver.observe(section);
+    });
+}
+
+function triggerSectionEntranceAnimations(section) {
+    const sectionId = section.id;
+    
+    // Animaciones específicas por sección
+    switch(sectionId) {
+        case 'inicio':
+            animateHeroElements();
+            break;
+        case 'invitacion':
+            animateInvitationElements();
+            break;
+        case 'contador':
+            animateCountdownElements();
+            break;
+        case 'confirmacion':
+            animateRSVPElements();
+            break;
+        case 'ubicacion':
+            animateLocationElements();
+            break;
+        case 'dresscode':
+            animateDresscodeElements();
+            break;
+        case 'regalos':
+            animateGiftsElements();
+            break;
+        case 'dedicatoria':
+            animateDedicationElements();
+            break;
+        case 'galeria':
+            animateGalleryElements();
+            break;
+    }
+    
+    // Animaciones generales para elementos comunes
+    animateCommonElements(section);
+}
+
+// Animaciones específicas por sección
+function animateHeroElements() {
+    const elements = [
+        '.hero-subtitle',
+        '.hero-title', 
+        '.hero-date',
+        '.scroll-indicator'
+    ];
+    
+    elements.forEach((selector, index) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(50px)';
+            
+            setTimeout(() => {
+                element.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, index * 200);
+        }
+    });
+}
+
+function animateInvitationElements() {
+    const textElements = document.querySelectorAll('.invitation-text');
+    const signature = document.querySelector('.invitation-section .signature');
+    
+    textElements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateX(-50px)';
+        
+        setTimeout(() => {
+            element.style.transition = 'all 0.6s ease';
+            element.style.opacity = '1';
+            element.style.transform = 'translateX(0)';
+        }, index * 300);
+    });
+    
+    if (signature) {
+        setTimeout(() => {
+            signature.style.opacity = '0';
+            signature.style.transform = 'scale(0.8)';
+            signature.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            signature.style.opacity = '1';
+            signature.style.transform = 'scale(1)';
+        }, 600);
+    }
+}
+
+function animateCountdownElements() {
+    const countdownItems = document.querySelectorAll('.countdown-item');
+    
+    countdownItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px) scale(0.9)';
+        
+        setTimeout(() => {
+            item.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0) scale(1)';
+            
+            // Efecto de pulsación para los números
+            const number = item.querySelector('span');
+            if (number) {
+                setTimeout(() => {
+                    number.style.animation = 'numberPulse 0.8s ease';
+                }, 200);
+            }
+        }, index * 150);
+    });
+}
+
+function animateRSVPElements() {
+    const content = document.querySelector('.rsvp-content p');
+    const buttons = document.querySelectorAll('.rsvp-btn');
+    
+    if (content) {
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(30px)';
+        content.style.transition = 'all 0.6s ease';
+        content.style.opacity = '1';
+        content.style.transform = 'translateY(0)';
+    }
+    
+    buttons.forEach((btn, index) => {
+        btn.style.opacity = '0';
+        btn.style.transform = 'translateY(30px) scale(0.9)';
+        
+        setTimeout(() => {
+            btn.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            btn.style.opacity = '1';
+            btn.style.transform = 'translateY(0) scale(1)';
+        }, (index + 1) * 200);
+    });
+}
+
+function animateLocationElements() {
+    const cards = document.querySelectorAll('.location-card');
+    
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px) rotateY(10deg)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) rotateY(0deg)';
+        }, index * 200);
+    });
+}
+
+function animateDresscodeElements() {
+    const cards = document.querySelectorAll('.dresscode-card');
+    const note = document.querySelector('.dresscode-note');
+    
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(' + (index % 2 === 0 ? '-50px' : '50px') + ')';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateX(0)';
+        }, index * 200);
+    });
+    
+    if (note) {
+        setTimeout(() => {
+            note.style.opacity = '0';
+            note.style.transform = 'translateY(30px)';
+            note.style.transition = 'all 0.6s ease';
+            note.style.opacity = '1';
+            note.style.transform = 'translateY(0)';
+        }, 400);
+    }
+}
+
+function animateGiftsElements() {
+    const intro = document.querySelector('.gifts-intro');
+    const cards = document.querySelectorAll('.gift-card');
+    
+    if (intro) {
+        intro.style.opacity = '0';
+        intro.style.transform = 'translateY(20px)';
+        intro.style.transition = 'all 0.6s ease';
+        intro.style.opacity = '1';
+        intro.style.transform = 'translateY(0)';
+    }
+    
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(40px) scale(0.9)';
+        
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1)';
+        }, (index + 1) * 150);
+    });
+}
+
+function animateDedicationElements() {
+    const intro = document.querySelector('.dedication-intro');
+    const parentCards = document.querySelectorAll('.parent-card');
+    const heart = document.querySelector('.dedication-heart');
+    const message = document.querySelector('.dedication-message');
+    const signature = document.querySelector('.dedication-signature');
+    
+    if (intro) {
+        intro.style.opacity = '0';
+        intro.style.transform = 'translateY(30px)';
+        intro.style.transition = 'all 0.8s ease';
+        intro.style.opacity = '1';
+        intro.style.transform = 'translateY(0)';
+    }
+    
+    setTimeout(() => {
+        parentCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px) scale(0.8)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0) scale(1)';
+            }, index * 200);
+        });
+        
+        if (heart) {
+            setTimeout(() => {
+                heart.style.opacity = '0';
+                heart.style.transform = 'scale(0)';
+                heart.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                heart.style.opacity = '1';
+                heart.style.transform = 'scale(1)';
+            }, 300);
+        }
+    }, 300);
+    
+    if (message) {
+        setTimeout(() => {
+            message.style.opacity = '0';
+            message.style.transform = 'translateY(30px)';
+            message.style.transition = 'all 0.8s ease';
+            message.style.opacity = '1';
+            message.style.transform = 'translateY(0)';
+        }, 800);
+    }
+    
+    if (signature) {
+        setTimeout(() => {
+            signature.style.opacity = '0';
+            signature.style.transform = 'translateY(20px)';
+            signature.style.transition = 'all 0.8s ease';
+            signature.style.opacity = '1';
+            signature.style.transform = 'translateY(0)';
+        }, 1000);
+    }
+}
+
+function animateGalleryElements() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const navButtons = document.querySelectorAll('.gallery-nav-btn');
+    const indicators = document.querySelectorAll('.gallery-indicator');
+    
+    galleryItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'scale(0.8) translateY(30px)';
+        
+        setTimeout(() => {
+            item.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1) translateY(0)';
+        }, index * 100);
+    });
+    
+    setTimeout(() => {
+        [...navButtons, ...indicators].forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                element.style.transition = 'all 0.4s ease';
+                element.style.opacity = '1';
+                element.style.transform = 'scale(1)';
+            }, index * 50);
+        });
+    }, 600);
+}
+
+function animateCommonElements(section) {
+    // Animar separadores
+    const separator = section.nextElementSibling;
+    if (separator && separator.classList.contains('section-separator')) {
+        separator.style.opacity = '0';
+        separator.style.transform = 'scale(0.8)';
+        
+        setTimeout(() => {
+            separator.style.transition = 'all 0.6s ease';
+            separator.style.opacity = '1';
+            separator.style.transform = 'scale(1)';
+        }, 500);
+    }
+    
+    // Animar títulos de sección
+    const sectionHeader = section.querySelector('.section-header h2');
+    if (sectionHeader) {
+        sectionHeader.style.opacity = '0';
+        sectionHeader.style.transform = 'translateY(-20px)';
+        sectionHeader.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        sectionHeader.style.opacity = '1';
+        sectionHeader.style.transform = 'translateY(0)';
+    }
+    
+    const divider = section.querySelector('.section-divider');
+    if (divider) {
+        divider.style.width = '0';
+        setTimeout(() => {
+            divider.style.transition = 'width 0.8s ease';
+            divider.style.width = '80px';
+        }, 300);
+    }
+}
+
+// =================================== 
+// INDICADOR DE PROGRESO
+// ===================================
+
+function setupProgressIndicator() {
+    // Crear indicador de progreso
+    const progressBar = document.createElement('div');
+    progressBar.id = 'scroll-progress';
+    progressBar.innerHTML = '<div class="progress-fill"></div>';
+    document.body.appendChild(progressBar);
+    
+    const progressFill = progressBar.querySelector('.progress-fill');
+    
+    const updateProgress = () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        
+        progressFill.style.width = scrolled + '%';
+    };
+    
+    window.addEventListener('scroll', updateProgress, { passive: true });
+}
+
+// =================================== 
+// NAVEGACIÓN ACTIVA
+// ===================================
+
+function setupActiveNavigation() {
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    const updateActiveNav = () => {
+        const sections = document.querySelectorAll('section, .hero-section');
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        
+        let currentActive = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - navbarHeight - 50;
+            const sectionHeight = section.offsetHeight;
+            
+            if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                currentActive = section.id || 'inicio';
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentActive}`) {
+                link.classList.add('active');
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+}
+
+// =================================== 
+// NAVEGACIÓN CON TECLADO
+// ===================================
+
+function setupKeyboardNavigation() {
+    const sections = Array.from(document.querySelectorAll('section, .hero-section'));
+    let currentSectionIndex = 0;
+    
+    document.addEventListener('keydown', (e) => {
+        if (isAnimating) return;
+        
+        switch(e.key) {
+            case 'ArrowDown':
+            case 'PageDown':
+                e.preventDefault();
+                if (currentSectionIndex < sections.length - 1) {
+                    currentSectionIndex++;
+                    scrollToSectionByIndex(currentSectionIndex);
+                }
+                break;
+                
+            case 'ArrowUp':
+            case 'PageUp':
+                e.preventDefault();
+                if (currentSectionIndex > 0) {
+                    currentSectionIndex--;
+                    scrollToSectionByIndex(currentSectionIndex);
+                }
+                break;
+                
+            case 'Home':
+                e.preventDefault();
+                currentSectionIndex = 0;
+                scrollToSectionByIndex(0);
+                break;
+                
+            case 'End':
+                e.preventDefault();
+                currentSectionIndex = sections.length - 1;
+                scrollToSectionByIndex(sections.length - 1);
+                break;
+        }
+    });
+}
+
+function scrollToSectionByIndex(index) {
+    const sections = document.querySelectorAll('section, .hero-section');
+    const targetSection = sections[index];
+    
+    if (targetSection) {
+        smoothScrollToSection(targetSection);
+    }
+}
+
+// =================================== 
+// UTILIDADES
+// ===================================
+
+function updateCurrentSection(section) {
+    const sections = Array.from(document.querySelectorAll('section, .hero-section'));
+    currentSection = sections.indexOf(section);
+}
+
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// =================================== 
+// EFECTOS ADICIONALES
+// ===================================
+
+// Efecto de ondas al hacer clic en botones
+function setupRippleEffect() {
+    const buttons = document.querySelectorAll('.rsvp-btn, .location-btn, .gift-btn');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `;
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+}
+
+// Inicializar todas las animaciones
+function initializeSectionAnimations() {
+    setupSectionAnimations();
+    setupRippleEffect();
+}
+
+// Integrar con la función principal de inicialización
+// Agregar esta línea al final de initializeApp() en el archivo script.js principal:
+// initializeSectionAnimations();
