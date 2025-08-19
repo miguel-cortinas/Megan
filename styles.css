@@ -518,7 +518,7 @@ section {
     .invitation-section .section-header h2,
     .countdown-section .section-header h2,
     .rsvp-section .section-header h2 {
-        font-size: 1.4em;
+        font-size: 32px;
     }
 }
 
