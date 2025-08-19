@@ -462,6 +462,67 @@ section {
 }
 
 /* =================================== */
+/* TÍTULOS CON EFECTO HERO PARA FONDOS OSCUROS */
+/* =================================== */
+
+/* Estilos base para títulos (mantener el existente para fondos claros) */
+.section-header h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8em;
+    color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+}
+
+/* Aplicar el mismo efecto del título hero a secciones con fondo oscuro */
+.invitation-section .section-header h2,
+.countdown-section .section-header h2,
+.rsvp-section .section-header h2 {
+    /* Usar el mismo gradiente que el título hero */
+    background: linear-gradient(90deg, var(--accent-color), #fff, var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* Misma animación de brillo del hero */
+    animation: shine 3s linear infinite;
+    
+    /* Mismo tamaño que otros títulos pero con el efecto hero */
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+/* Asegurar que la animación shine esté disponible (ya debe estar en el CSS principal) */
+@keyframes shine {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* Responsive para títulos con efecto hero */
+@media (max-width: 768px) {
+    .invitation-section .section-header h2,
+    .countdown-section .section-header h2,
+    .rsvp-section .section-header h2 {
+        font-size: 1.6em;
+    }
+}
+
+@media (max-width: 480px) {
+    .invitation-section .section-header h2,
+    .countdown-section .section-header h2,
+    .rsvp-section .section-header h2 {
+        font-size: 1.4em;
+    }
+}
+
+/* =================================== */
 /* SECCIÓN DE INVITACIÓN */
 /* =================================== */
 
