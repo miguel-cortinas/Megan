@@ -355,23 +355,58 @@
         </div>
 
         <section id="galeria" class="gallery-section">
-            <div class="container">
+            <div class="gallery-container">
                 <div class="section-header">
                     <h2>Galería de Recuerdos</h2>
                     <div class="section-divider"></div>
                 </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="https://github.com/miguel-cortinas/prueba1/blob/main/1.jpg?raw=true" alt="Foto 1" loading="lazy">
+                
+                <div class="gallery-wrapper">
+                    <div id="gallery-grid" class="gallery-grid">
+                        <div class="gallery-item" data-index="0">
+                            <img src="https://github.com/miguel-cortinas/prueba1/blob/main/1.jpg?raw=true" alt="Momento especial 1" loading="lazy">
+                            <div class="gallery-overlay">
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-index="1">
+                            <img src="https://github.com/miguel-cortinas/prueba1/blob/main/2.jpeg?raw=true" alt="Momento especial 2" loading="lazy">
+                            <div class="gallery-overlay">
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-index="2">
+                            <img src="https://github.com/miguel-cortinas/prueba1/blob/main/3.jpeg?raw=true" alt="Momento especial 3" loading="lazy">
+                            <div class="gallery-overlay">
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item" data-index="3">
+                            <img src="https://github.com/miguel-cortinas/prueba1/blob/main/4.jpeg?raw=true" alt="Momento especial 4" loading="lazy">
+                            <div class="gallery-overlay">
+                            </div>
+                        </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://github.com/miguel-cortinas/prueba1/blob/main/2.jpeg?raw=true" alt="Foto 2" loading="lazy">
+                    
+                    <div class="gallery-nav">
+                        <button class="gallery-nav-btn" id="gallery-prev" aria-label="Anterior">
+                            <span>‹</span>
+                        </button>
+                        
+                        <div class="gallery-indicators" id="gallery-indicators">
+                            <div class="gallery-indicator active" data-index="0"></div>
+                            <div class="gallery-indicator" data-index="1"></div>
+                            <div class="gallery-indicator" data-index="2"></div>
+                            <div class="gallery-indicator" data-index="3"></div>
+                        </div>
+                        
+                        <button class="gallery-nav-btn" id="gallery-next" aria-label="Siguiente">
+                            <span>›</span>
+                        </button>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://github.com/miguel-cortinas/prueba1/blob/main/3.jpeg?raw=true" alt="Foto 3" loading="lazy">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://github.com/miguel-cortinas/prueba1/blob/main/4.jpeg?raw=true" alt="Foto 4" loading="lazy">
+                    
+                    <div class="gallery-counter">
+                        <span class="current">1</span> de <span class="total">4</span>
                     </div>
                 </div>
             </div>
@@ -379,8 +414,7 @@
 
         <footer class="footer">
             <div class="container">
-                <p>Gracias por acompañarme en este día tan especial</p>
-                <p class="footer-signature">Con amor, Megan ✨</p>
+                <p class="footer-signature">Gracias por acompañarme en este día tan especial</p>
             </div>
         </footer>
 
