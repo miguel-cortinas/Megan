@@ -1155,12 +1155,6 @@ section {
     z-index: 2;
 }
 
-.dedication-heart {
-    font-size: 2em;
-    color: var(--accent-color);
-    animation: pulse 2s ease-in-out infinite;
-    text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
-}
 
 .dedication-message {
     font-size: 1.2em;
@@ -1193,20 +1187,34 @@ section {
     font-weight: 600;
 }
 
-/* Animaciones para la sección */
-@keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-    25% {
-        transform: scale(1.1);
-    }
-    50% {
-        transform: scale(1);
-    }
-    75% {
-        transform: scale(1.05);
-    }
+/* Estilos para los títulos de sección dentro de la dedicatoria */
+.dedication-section-title {
+    text-align: center;
+    margin: 50px 0 30px 0;
+    position: relative;
+}
+
+.dedication-section-title h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8em;
+    color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.dedication-section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--accent-color);
+    margin: 0 auto;
+    border-radius: 1px;
 }
 
 /* Responsive para la dedicatoria */
