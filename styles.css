@@ -383,7 +383,7 @@ body {
     justify-content: center;
     position: relative;
     text-align: center;
-    margin: 0; /* CAMBIO: Sin margen */
+    margin: 0;
 }
 
 .hero-overlay {
@@ -392,7 +392,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(212, 16, 70, 0.2));
+    background-color: rgba(0, 0, 0, 0.4); 
 }
 
 .hero-content {
@@ -450,8 +450,8 @@ body {
 /* =================================== */
 
 section {
-    padding: 0; /* Eliminado el padding general */
-    margin: 0; /* CAMBIO: Sin margen */
+    padding: 0; 
+    margin: 0;
 }
 
 .section-header {
@@ -473,16 +473,40 @@ section {
 .section-divider {
     width: 80px;
     height: 3px;
-    background: var(--accent-color);  /* ← CAMBIO 2: Era var(--gradient) */
+    background: var(--accent-color); 
     margin: 0 auto;
     border-radius: 2px;
+}
+
+/* =================================== */
+/* AÑADIDO: Estilos para el Overlay */
+/* =================================== */
+.section-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.section-overlay.dark {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* CORRECCIÓN: Asegura que todo el contenido esté sobre el protector */
+.invitation-bg .container,
+.countdown-bg .container,
+.rsvp-bg .container {
+    position: relative;
+    z-index: 2;
 }
 
 /* =================================== */
 /* TÍTULOS CON EFECTO HERO PARA FONDOS OSCUROS */
 /* =================================== */
 
-/* Estilos base para títulos (mantener el existente para fondos claros) */
 .section-header h2 {
     font-family: 'Dancing Script', cursive;
     font-size: 2.8em;
@@ -494,25 +518,18 @@ section {
     font-weight: 600;
 }
 
-/* Aplicar el mismo efecto del título hero a secciones con fondo oscuro */
 .invitation-section .section-header h2,
 .countdown-section .section-header h2,
 .rsvp-section .section-header h2 {
-    /* Usar el mismo gradiente que el título hero */
     background: linear-gradient(90deg, var(--accent-color), #fff, var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    
-    /* Misma animación de brillo del hero */
     animation: shine 3s linear infinite;
-    
-    /* Mismo tamaño que otros títulos pero con el efecto hero */
     font-size: 1.8em;
     font-weight: 600;
 }
 
-/* Asegurar que la animación shine esté disponible (ya debe estar en el CSS principal) */
 @keyframes shine {
     0% {
         background-position: -200% center;
@@ -522,7 +539,6 @@ section {
     }
 }
 
-/* Responsive para títulos con efecto hero */
 @media (max-width: 768px) {
     .invitation-section .section-header h2,
     .countdown-section .section-header h2,
@@ -545,8 +561,8 @@ section {
 
 .invitation-section {
     position: relative;
-    padding: 0; /* CAMBIO: Sin padding */
-    margin: 0; /* CAMBIO: Sin margen */
+    padding: 0;
+    margin: 0;
 }
 
 .invitation-bg {
@@ -558,7 +574,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: center;
-    margin: 0; /* CAMBIO: Sin margen */
+    margin: 0;
 }
 
 .invitation-content {
@@ -600,8 +616,8 @@ section {
 
 .countdown-section {
     position: relative;
-    padding: 0; /* CAMBIO: Sin padding */
-    margin: 0; /* CAMBIO: Sin margen */
+    padding: 0;
+    margin: 0;
 }
 
 .countdown-bg {
@@ -613,7 +629,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: flex-start;
-    margin: 0; /* CAMBIO: Sin margen */
+    margin: 0;
 }
 
 .countdown-section .section-header h2 {
@@ -671,8 +687,8 @@ section {
 
 .rsvp-section {
     position: relative;
-    padding: 0; /* CAMBIO: Sin padding */
-    margin: 0; /* CAMBIO: Sin margen */
+    padding: 0;
+    margin: 0;
 }
 
 .rsvp-bg {
@@ -684,7 +700,7 @@ section {
     min-height: 70vh;
     display: flex;
     align-items: center;
-    margin: 0; /* CAMBIO: Sin margen */
+    margin: 0;
 }
 
 .rsvp-content {
@@ -819,7 +835,7 @@ section {
 .location-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
     padding: 80px 0;
-    margin: 0; /* CAMBIO: Sin margen */
+    margin: 0;
 }
 
 .location-content {
@@ -836,12 +852,12 @@ section {
     padding: 30px;
     text-align: center;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ENHANCED */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .location-card:hover {
-    transform: translateY(-10px); /* ENHANCED */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* ENHANCED */
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); 
 }
 
 .location-icon {
@@ -895,7 +911,7 @@ section {
 .dresscode-section {
     background: var(--white);
     padding: 80px 0;
-    margin: 0; /* CAMBIO: Sin margen */
+    margin: 0;
 }
 
 .dresscode-content {
@@ -912,13 +928,13 @@ section {
     padding: 30px;
     text-align: center;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* ENHANCED */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
     border: 2px solid transparent;
 }
 
 .dresscode-card:hover {
-    transform: translateY(-10px); /* ENHANCED */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* ENHANCED */
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     border-color: var(--accent-color);
 }
 
@@ -958,7 +974,7 @@ section {
 .gifts-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
     padding: 80px 0;
-    margin: 0; /* CAMBIO: Sin margen */
+    margin: 0;
 }
 
 .gifts-intro {
@@ -985,13 +1001,13 @@ section {
     padding: 30px;
     text-align: center;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* ENHANCED */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     border: 2px solid transparent;
 }
 
 .gift-card:hover {
-    transform: translateY(-10px); /* ENHANCED */
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* ENHANCED */
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     border-color: var(--accent-color);
 }
 
@@ -1237,60 +1253,6 @@ section {
     border-radius: 1px;
 }
 
-/* Responsive para la dedicatoria */
-@media (max-width: 768px) {
-    .dedication-section {
-        padding: 60px 0;
-    }
-    
-    .parents-dedication {
-        flex-direction: column;
-        gap: 25px;
-    }
-    
-    .parent-card {
-        min-width: 250px;
-        max-width: 300px;
-        padding: 25px 20px;
-    }
-    
-    .dedication-intro::before,
-    .dedication-intro::after {
-        display: none;
-    }
-    
-    .dedication-intro {
-        font-size: 1.2em;
-        padding: 0 10px;
-    }
-    
-    .dedication-message {
-        font-size: 1.1em;
-        padding: 20px;
-        margin: 30px auto;
-    }
-    
-    .dedication-heart {
-        font-size: 1.5em;
-        margin: 20px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .parent-card {
-        min-width: 220px;
-        max-width: 280px;
-    }
-    
-    .parent-card h3 {
-        font-size: 1.2em;
-    }
-    
-    .dedication-signature p {
-        font-size: 1.5em;
-    }
-}
-
 /* =================================== */
 /* SECCIÓN GALERÍA MEJORADA */
 /* =================================== */
@@ -1344,12 +1306,12 @@ section {
     -webkit-overflow-scrolling: touch;
     gap: 25px;
     padding: 20px 10px;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .gallery-grid::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
 }
 
 .gallery-item {
@@ -1434,7 +1396,6 @@ section {
     filter: brightness(1.1) saturate(1.2);
 }
 
-/* Overlay con información */
 .gallery-overlay {
     position: absolute;
     bottom: 0;
@@ -1471,7 +1432,6 @@ section {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Botones de navegación del carrusel */
 .gallery-nav {
     display: flex;
     justify-content: center;
@@ -1534,7 +1494,6 @@ section {
     transform: none;
 }
 
-/* Indicadores de posición */
 .gallery-indicators {
     display: flex;
     justify-content: center;
@@ -1564,7 +1523,6 @@ section {
     transform: scale(1.1);
 }
 
-/* Contador de fotos */
 .gallery-counter {
     text-align: center;
     margin-top: 15px;
@@ -1578,207 +1536,6 @@ section {
     font-weight: bold;
 }
 
-/* Lightbox mejorado */
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3000;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    backdrop-filter: blur(5px);
-}
-
-.lightbox.show {
-    opacity: 1;
-}
-
-.lightbox-content {
-    position: relative;
-    max-width: 90vw;
-    max-height: 90vh;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    transform: scale(0.8);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.lightbox.show .lightbox-content {
-    transform: scale(1);
-}
-
-.lightbox img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    border: none;
-    color: white;
-    font-size: 1.5em;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.lightbox-close:hover {
-    background: rgba(255, 0, 0, 0.8);
-    transform: scale(1.1);
-}
-
-/* Animación de aparición escalonada */
-.gallery-item {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: galleryItemAppear 0.6s ease forwards;
-}
-
-.gallery-item:nth-child(1) { animation-delay: 0.1s; }
-.gallery-item:nth-child(2) { animation-delay: 0.2s; }
-.gallery-item:nth-child(3) { animation-delay: 0.3s; }
-.gallery-item:nth-child(4) { animation-delay: 0.4s; }
-.gallery-item:nth-child(5) { animation-delay: 0.5s; }
-
-@keyframes galleryItemAppear {
-    0% {
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* Efecto de brillo en las imágenes */
-@keyframes imageShine {
-    0% {
-        background-position: -200% center;
-    }
-    100% {
-        background-position: 200% center;
-    }
-}
-
-.gallery-item::after {
-    animation: imageShine 3s linear infinite;
-}
-
-/* =================================== */
-/* RESPONSIVE DESIGN PARA GALERÍA */
-/* =================================== */
-
-@media (max-width: 768px) {
-    .gallery-section {
-        padding: 60px 0;
-    }
-    
-    .gallery-container {
-        padding: 0 15px;
-    }
-    
-    .gallery-wrapper {
-        padding: 20px 15px;
-        border-radius: 15px;
-    }
-    
-    .gallery-item {
-        width: 280px;
-        height: 200px;
-    }
-    
-    .gallery-grid {
-        gap: 20px;
-        padding: 15px 5px;
-    }
-    
-    .gallery-nav-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1em;
-    }
-    
-    .gallery-overlay {
-        padding: 15px;
-    }
-    
-    .gallery-overlay h4 {
-        font-size: 1em;
-    }
-    
-    .gallery-overlay p {
-        font-size: 0.85em;
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery-section {
-        padding: 50px 0;
-    }
-    
-    .gallery-container {
-        padding: 0 10px;
-    }
-    
-    .gallery-wrapper {
-        padding: 15px 10px;
-    }
-    
-    .gallery-item {
-        width: 250px;
-        height: 180px;
-    }
-    
-    .gallery-grid {
-        gap: 15px;
-        padding: 10px 0;
-    }
-    
-    .gallery-nav {
-        gap: 10px;
-        margin-top: 20px;
-    }
-    
-    .gallery-nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1em;
-    }
-    
-    .lightbox-content {
-        max-width: 95vw;
-        max-height: 95vh;
-    }
-    
-    .lightbox-close {
-        top: 10px;
-        right: 10px;
-        width: 35px;
-        height: 35px;
-        font-size: 1.3em;
-    }
-}
-
 /* =================================== */
 /* FOOTER */
 /* =================================== */
@@ -1788,7 +1545,7 @@ section {
     color: var(--white);
     text-align: center;
     padding: 40px 0;
-    margin: 0; /* CAMBIO: Sin margen */
+    margin: 0;
 }
 
 .footer p {
@@ -1868,15 +1625,6 @@ section {
     }
 }
 
-@keyframes shine {
-    0% {
-        background-position: -200% center;
-    }
-    100% {
-        background-position: 200% center;
-    }
-}
-
 @keyframes sparkleFloat {
     0%, 100% {
         transform: translateY(0) scale(1);
@@ -1941,7 +1689,6 @@ section {
         font-size: 1em;
     }
 
-    /* CAMBIO: Ajuste de padding para móviles en secciones con fondos */
     .location-section,
     .dresscode-section,
     .gifts-section,
@@ -1999,22 +1746,7 @@ section {
         justify-content: center;
     }
 
-    .bg-credit {
-        font-size: 0.7em;
-        padding: 6px 10px;
-        bottom: 5px;
-        right: 5px;
-    }
-
-    .location-content {
-        grid-template-columns: 1fr;
-    }
-
-    .dresscode-content {
-        grid-template-columns: 1fr;
-    }
-
-    .gifts-options {
+    .location-content, .dresscode-content, .gifts-options {
         grid-template-columns: 1fr;
     }
 
@@ -2037,7 +1769,6 @@ section {
         font-size: clamp(2rem, 5vw, 2.8rem);
     }
     
-    /* Ajuste para la nueva carta en móviles */
     .wrapper {
         transform: scale(0.9);
     }
@@ -2045,7 +1776,6 @@ section {
         gap: 20px;
     }
 
-    /* CAMBIO: Ajuste de padding para móviles pequeños */
     .location-section,
     .dresscode-section,
     .gifts-section,
@@ -2210,7 +1940,6 @@ section {
     }
 }
 
-/* Tooltip para la burbuja */
 .music-bubble::before {
     content: 'Música';
     position: absolute;
@@ -2233,7 +1962,6 @@ section {
     transform: translateY(0);
 }
 
-/* Responsive para móviles */
 @media (max-width: 768px) {
     .music-bubble {
         bottom: 15px;
@@ -2286,7 +2014,6 @@ section {
         transparent 100%);
 }
 
-/* Pequeños puntos decorativos en las líneas */
 .separator-line::before {
     content: '';
     position: absolute;
@@ -2339,7 +2066,6 @@ section {
     overflow: hidden;
 }
 
-/* Anillo sutil alrededor del ornamento */
 .separator-ornament > div::before {
     content: '';
     position: absolute;
@@ -2363,7 +2089,6 @@ section {
     transition: opacity 0.5s ease;
 }
 
-/* Brillo muy sutil en el interior */
 .separator-ornament > div::after {
     content: '';
     position: absolute;
@@ -2391,7 +2116,6 @@ section {
     opacity: 1;
 }
 
-/* Imagen con filtro suave */
 .separator-ornament img {
     width: 22px;
     height: 22px;
@@ -2404,7 +2128,6 @@ section {
     transform: scale(1.05);
 }
 
-/* Animación de entrada más suave */
 .section-separator {
     opacity: 0;
     transform: translateY(20px);
@@ -2419,7 +2142,6 @@ section {
     animation-delay: 0.2s;
 }
 
-/* Keyframes minimalistas */
 @keyframes gentleFadeIn {
     0% {
         opacity: 0;
@@ -2442,7 +2164,6 @@ section {
     }
 }
 
-/* Responsive mejorado */
 @media (max-width: 768px) {
     .section-separator {
         margin: 35px 0;
