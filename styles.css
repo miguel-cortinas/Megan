@@ -33,6 +33,23 @@ body {
 }
 
 /* =================================== */
+/* SCROLL ANIMATION EFFECTS (NEW) */
+/* =================================== */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Use a custom property for staggered delays, set via inline style in HTML */
+    transition-delay: var(--delay, 0s); 
+}
+
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =================================== */
 /* SECCIÓN DE APERTURA DE CARTA */
 /* =================================== */
 
@@ -819,11 +836,12 @@ section {
     padding: 30px;
     text-align: center;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ENHANCED */
 }
 
 .location-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px); /* ENHANCED */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* ENHANCED */
 }
 
 .location-icon {
@@ -894,12 +912,13 @@ section {
     padding: 30px;
     text-align: center;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* ENHANCED */
     border: 2px solid transparent;
 }
 
 .dresscode-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px); /* ENHANCED */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* ENHANCED */
     border-color: var(--accent-color);
 }
 
@@ -966,12 +985,13 @@ section {
     padding: 30px;
     text-align: center;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* ENHANCED */
     border: 2px solid transparent;
 }
 
 .gift-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px); /* ENHANCED */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* ENHANCED */
     border-color: var(--accent-color);
 }
 

@@ -12,9 +12,9 @@ window.addEventListener('load', function() {
 function initializeApp() {
     setupLetterOpening();
     setupNavigation();
-    setupScrollAnimations();
+    setupScrollAnimations(); // REPLACED with new version
     setupCountdown();
-    setupMusicBubble(); // Agregar esta línea
+    setupMusicBubble(); 
     initializeGalleryImproved();
 }
 
@@ -300,60 +300,31 @@ function setupNavigation() {
 }
 
 // =================================== 
-// ANIMACIONES DE SCROLL
+// ANIMACIONES DE SCROLL (REVISED)
 // ===================================
 
 function setupScrollAnimations() {
-    // Intersection Observer para animaciones
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Start loading a bit before it's fully in view
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                
-                // Animaciones específicas para elementos del contador
-                if (entry.target.classList.contains('countdown-section')) {
-                    animateCountdownItems();
-                }
-                
-                // Animaciones para tarjetas de galería
-                if (entry.target.classList.contains('gallery-section')) {
-                    animateGalleryItems();
-                }
+                entry.target.classList.add('animated');
+                observer.unobserve(entry.target); // Animate only once per element
             }
         });
     }, observerOptions);
 
-    // Observar todas las secciones
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        observer.observe(section);
+    // Find all elements with the .scroll-animate class and observe them
+    const elementsToAnimate = document.querySelectorAll('.scroll-animate');
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
     });
 }
 
-function animateCountdownItems() {
-    const countdownItems = document.querySelectorAll('.countdown-item');
-    countdownItems.forEach((item, index) => {
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0) scale(1)';
-        }, index * 100);
-    });
-}
-
-function animateGalleryItems() {
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    galleryItems.forEach((item, index) => {
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'scale(1)';
-        }, index * 100);
-    });
-}
 
 // =================================== 
 // CONTADOR REGRESIVO
