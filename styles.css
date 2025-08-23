@@ -374,7 +374,7 @@ body {
 
 .hero-section {
     height: 100vh;
-    background-image: url('1.webp');
+    background-image: url('https://github.com/miguel-cortinas/prueba1/blob/main/1.jpg?raw=true');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -826,6 +826,37 @@ section {
 .rsvp-btn:active {
     transform: translateY(-2px) scale(1);
     transition: all 0.1s ease;
+}
+
+/* =================================== */
+/* ESTILOS PARA GOOGLE FORMS EMBEBIDO (NUEVO) */
+/* =================================== */
+
+.google-form-container {
+    margin-top: 30px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.google-form-container iframe {
+    display: block;
+    border: none;
+    width: 100%;
+}
+
+/* Ajustes para la sección RSVP con el formulario */
+.rsvp-content p {
+    font-size: 1.2em; /* Ajusta el tamaño del texto introductorio si es necesario */
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+    border: none;
+    font-style: normal;
 }
 
 /* =================================== */
@@ -2232,4 +2263,146 @@ section {
         width: 16px;
         height: 16px;
     }
+}
+
+/* =================================== */
+/* ESTILOS PARA FORMULARIO PERSONALIZADO (NUEVO) */
+/* =================================== */
+
+.custom-form-container {
+    max-width: 550px;
+    margin: 30px auto 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--border-radius);
+    padding: 35px;
+    box-shadow: var(--shadow);
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(19, 60, 135, 0.2);
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.4);
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(19, 60, 135, 0.2);
+    transition: all 0.3s ease;
+}
+
+.radio-label:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: var(--primary-color);
+}
+
+.radio-label input[type="radio"] {
+    display: none;
+}
+
+.radio-label span {
+    position: relative;
+    padding-left: 30px;
+}
+
+.radio-label span::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.radio-label span::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.radio-label input[type="radio"]:checked + span::before {
+    border-color: var(--primary-color);
+}
+
+.radio-label input[type="radio"]:checked + span::after {
+    transform: translateY(-50%) scale(1);
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--white);
+    background: var(--gradient);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(19, 60, 135, 0.3);
+}
+
+#thank-you-message {
+    text-align: center;
+    padding: 20px;
+    color: var(--primary-color);
+}
+
+#thank-you-message h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    color: var(--accent-color);
+    -webkit-text-stroke: 1px var(--primary-color);
 }

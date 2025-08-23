@@ -16,6 +16,7 @@ function initializeApp() {
     setupCountdown();
     setupMusicBubble(); 
     initializeGalleryImproved();
+    setupAdvancedForm();
 }
 
 // =================================== 
@@ -1196,3 +1197,68 @@ document.head.appendChild(additionalStyleSheet);
 window.addEventListener('beforeunload', function() {
     stopGalleryAutoPlay();
 });
+
+// =================================== 
+// MANEJO DE FORMULARIO PERSONALIZADO (NUEVO)
+// ===================================
+let formSubmitted = false;
+
+function showThankYouMessage() {
+    const form = document.querySelector('.custom-form-container form');
+    const thankYouMessage = document.getElementById('thank-you-message');
+    
+    if(form && thankYouMessage) {
+        form.style.display = 'none';
+        thankYouMessage.style.display = 'block';
+    }
+}
+
+// =================================== 
+// MANEJO AVANZADO DEL FORMULARIO DE CONFIRMACIÓN
+// ===================================
+function setupAdvancedForm() {
+    const rsvpForm = document.getElementById('rsvp-form');
+    const attendanceRadios = document.querySelectorAll('input[name="entry.877086558"]');
+    const guestsInput = document.getElementById('invitados');
+
+    if (!rsvpForm || !attendanceRadios.length || !guestsInput) {
+        console.error('No se encontraron los elementos del formulario para la configuración avanzada.');
+        return;
+    }
+
+    // --- Lógica para deshabilitar el campo de invitados ---
+    const updateGuestField = () => {
+        const selectedOption = document.querySelector('input[name="entry.877086558"]:checked');
+        if (selectedOption && selectedOption.value === 'No puedo, lo siento') {
+            guestsInput.disabled = true;
+            guestsInput.required = false;
+            guestsInput.value = '';
+            guestsInput.style.backgroundColor = '#e9ecef';
+            guestsInput.style.cursor = 'not-allowed';
+        } else {
+            guestsInput.disabled = false;
+            guestsInput.required = true;
+            guestsInput.style.backgroundColor = '';
+            guestsInput.style.cursor = '';
+        }
+    };
+    
+    attendanceRadios.forEach(radio => radio.addEventListener('change', updateGuestField));
+    updateGuestField(); // Ejecutar al inicio
+
+    // --- Lógica simplificada para el envío ---
+    rsvpForm.addEventListener('submit', function() {
+        // Le damos un pequeño instante al formulario para que inicie el envío
+        // antes de ocultarlo y mostrar el mensaje de agradecimiento.
+        setTimeout(function() {
+            const formContainer = document.querySelector('.custom-form-container form');
+            const thankYouMessage = document.getElementById('thank-you-message');
+            if (formContainer && thankYouMessage) {
+                formContainer.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+            }
+        }, 100);
+        
+        // ¡No usamos event.preventDefault() para que el formulario se envíe correctamente!
+    });
+}

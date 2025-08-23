@@ -80,8 +80,8 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <div class="hero-text">
-                    <p class="hero-subtitle"><br>Mis XV Años</p>
-                    <h1 class="hero-title">Megan Lucero<br>Morgan Piñón</h1>
+                    <p class="hero-subtitle">Mis XV Años<br></p>
+                    <h1 class="hero-title">Megan Lucero<br>Morgan Piñon<br></h1>
                     <p class="hero-date"><br>19 • Septiembre • 2025</p>
                 </div>
             </div>
@@ -99,7 +99,7 @@
         </div>
 
         <section id="invitacion" class="invitation-section">
-            <div class="invitation-bg" style="background-image: url('4.webp');">
+            <div class="invitation-bg" style="background-image: url('https://github.com/miguel-cortinas/prueba1/blob/main/4.jpeg?raw=true');">
                 <div class="section-overlay"></div>
                 <div class="container">
                     <div class="section-header scroll-animate">
@@ -133,7 +133,7 @@
         </div>
 
         <section id="contador" class="countdown-section">
-            <div class="countdown-bg" style="background-image: url('3.webp');">
+            <div class="countdown-bg" style="background-image: url('https://github.com/miguel-cortinas/prueba1/blob/main/3.jpeg?raw=true');">
                 <div class="section-overlay dark"></div>
                 <div class="container">
                     <div class="section-header scroll-animate">
@@ -179,17 +179,61 @@
                         <div class="section-divider"></div>
                     </div>
                     <div class="rsvp-content">
-                        <p class="scroll-animate" style="--delay: 0.2s;">Por favor, confirma tu asistencia antes del 19 de septiembre.</p>
-                        <div class="rsvp-buttons">
-                            <a href="https://wa.me/1234567890?text=¡Hola! Confirmo mi asistencia a los XV años de Megan" 
-                               class="rsvp-btn whatsapp scroll-animate" style="--delay: 0.3s;" target="_blank">
-                                <span><img src="https://github.com/miguel-cortinas/prueba1/blob/main/mensaje.png?raw=true" alt="mensaje" loading="lazy"></span>
-                                WhatsApp
-                            </a>
-                            <a href="tel:+1234567890" class="rsvp-btn phone scroll-animate" style="--delay: 0.4s;">
-                                <span><img src="https://github.com/miguel-cortinas/prueba1/blob/main/celular.png?raw=true" alt="celular" loading="lazy"></span>
-                                Llamar
-                            </a>
+                        <p class="scroll-animate" style="--delay: 0.2s;">
+                            Tu presencia es el mejor regalo, pero saber que vienes hará la celebración aún más especial. Por favor, ayúdame a confirmar tu asistencia.
+                        </p>
+                        
+                        <div class="custom-form-container scroll-animate" style="--delay: 0.3s;">
+                            <form 
+                                id="rsvp-form"
+                                action="https://docs.google.com/forms/d/e/1FAIpQLSdpNYznDmSNT6H4ChrBHZwLrKjElk1-ZcLnZ7tpmGSsD0qLZw/formResponse" 
+                                method="POST"
+                                target="hidden_iframe"> <div class="form-group">
+                                    <label for="nombre">Nombre Completo:</label>
+                                    <input 
+                                        type="text" 
+                                        id="nombre" 
+                                        name="entry.559352220" 
+                                        class="form-input"
+                                        placeholder="Escribe tu nombre y apellido" 
+                                        required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>¿Podrás acompañarnos?</label>
+                                    <div class="radio-group">
+                                        <label class="radio-label">
+                                            <input type="radio" name="entry.877086558" value="Sí, allí estaré" required>
+                                            <span>Sí, allí estaré</span>
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="entry.877086558" value="No puedo, lo siento" required>
+                                            <span>No puedo, lo siento</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="invitados">Número de Pases:</label>
+                                    <input 
+                                        type="number" 
+                                        id="invitados" 
+                                        name="entry.924523986" 
+                                        class="form-input"
+                                        placeholder="Ej: 2"
+                                        min="1"
+                                        required>
+                                </div>
+                                
+                                <button type="submit" class="submit-btn">Enviar Confirmación</button>
+                            </form>
+                            
+                            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                            
+                            <div id="thank-you-message" style="display:none;">
+                                <h3>¡Gracias por confirmar!</h3>
+                                <p>Tu respuesta ha sido enviada. ¡Nos vemos en la fiesta!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -378,25 +422,25 @@
                 <div class="gallery-wrapper scroll-animate" style="--delay: 0.2s;">
                     <div id="gallery-grid" class="gallery-grid">
                         <div class="gallery-item" data-index="0">
-                            <img src="1.webp" alt="Momento especial 1" loading="lazy">
+                            <img src="https://github.com/miguel-cortinas/prueba1/blob/main/1.jpg?raw=true" alt="Momento especial 1" loading="lazy">
                             <div class="gallery-overlay">
                             </div>
                         </div>
                         
                         <div class="gallery-item" data-index="1">
-                            <img src="2.webp" alt="Momento especial 2" loading="lazy">
+                            <img src="https://github.com/miguel-cortinas/prueba1/blob/main/2.jpeg?raw=true" alt="Momento especial 2" loading="lazy">
                             <div class="gallery-overlay">
                             </div>
                         </div>
                         
                         <div class="gallery-item" data-index="2">
-                            <img src="3.webp" alt="Momento especial 3" loading="lazy">
+                            <img src="https://github.com/miguel-cortinas/prueba1/blob/main/3.jpeg?raw=true" alt="Momento especial 3" loading="lazy">
                             <div class="gallery-overlay">
                             </div>
                         </div>
                         
                         <div class="gallery-item" data-index="3">
-                            <img src="4.webp" alt="Momento especial 4" loading="lazy">
+                            <img src="https://github.com/miguel-cortinas/prueba1/blob/main/4.jpeg?raw=true" alt="Momento especial 4" loading="lazy">
                             <div class="gallery-overlay">
                             </div>
                         </div>
