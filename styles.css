@@ -2402,7 +2402,11 @@ section {
 
 #thank-you-message h3 {
     font-family: 'Dancing Script', cursive;
-    font-size: 2em;
-    color: var(--accent-color);
-    -webkit-text-stroke: 1px var(--primary-color);
+    font-size: 1.8em;
+    color: var(--primary-color);
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
 }
