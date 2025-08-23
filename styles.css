@@ -2410,3 +2410,10 @@ section {
     background-clip: text;
     font-weight: 600;
 }
+
+#thank-you-message p {
+    font-family: 'Playfair Display', serif;
+    font-size: .6em;
+    color: var(--primary-color);
+    font-weight: 600;
+}
