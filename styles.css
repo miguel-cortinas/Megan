@@ -2417,3 +2417,33 @@ section {
     color: var(--primary-color);
     font-weight: 600;
 }
+
+/* =================================== */
+/* ESTILO PARA NOTA "NO NIÑOS" (AJUSTADO Y MEJORADO) */
+/* =================================== */
+.rsvp-note {
+    background: rgba(0, 0, 0, 0.4); /* Fondo un poco más oscuro para mejor contraste */
+    border: 1px solid rgba(255, 215, 0, 0.4); /* Borde con el color de acento */
+    backdrop-filter: blur(10px);
+    padding: 12px 20px; /* Se ajusta el padding */
+    border-radius: 50px; /* Bordes redondeados para un look tipo "píldora" */
+    max-width: 90%;
+    margin: 30px auto 0 auto; /* Un poco más de margen superior */
+    font-size: 14px; /* Fuente ligeramente más pequeña */
+    font-style: italic;
+    color: var(--white);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    display: inline-flex; /* Permite alinear el icono con el texto */
+    align-items: center;
+    gap: 10px; /* Espacio entre el icono y el texto */
+}
+
+.rsvp-note::before {
+    content: 'ⓘ'; /* Icono de información (unicode) */
+    font-family: 'Arial', sans-serif; /* Asegura que el icono se vea bien */
+    font-style: normal; /* Para que el icono no sea itálico */
+    font-size: 1.1em;
+    color: var(--accent-color);
+    opacity: 0.9;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Agrega un sutil brillo al icono */
+}

@@ -171,16 +171,16 @@
         </div>
 
         <section id="confirmacion" class="rsvp-section">
-            <div class="rsvp-bg" style="background-image: url('2.webp');">
+            <div class="rsvp-bg" style="background-image: url('fotos/4.jpeg');">
                 <div class="section-overlay"></div>
                 <div class="container">
                     <div class="section-header scroll-animate">
-                        <h2><br>Confirmación de Asistencia</h2>
+                        <h2><br><br><br>Confirmación de Asistencia</h2>
                         <div class="section-divider"></div>
                     </div>
                     <div class="rsvp-content">
                         <p class="scroll-animate" style="--delay: 0.2s;">
-                            <br><br><br><br>Tu presencia es el mejor regalo, pero saber que vienes hará la celebración aún más especial. Por favor, ayúdame a confirmar tu asistencia.
+                            Tu presencia es el mejor regalo, pero saber que vienes hará la celebración aún más especial. Por favor, ayúdame a confirmar tu asistencia.
                         </p>
                         
                         <div class="custom-form-container scroll-animate" style="--delay: 0.3s;">
@@ -188,7 +188,9 @@
                                 id="rsvp-form"
                                 action="https://docs.google.com/forms/d/e/1FAIpQLSdpNYznDmSNT6H4ChrBHZwLrKjElk1-ZcLnZ7tpmGSsD0qLZw/formResponse" 
                                 method="POST"
-                                target="hidden_iframe"> <div class="form-group">
+                                target="hidden_iframe">
+                                
+                                <div class="form-group">
                                     <label for="nombre">Nombre Completo:</label>
                                     <input 
                                         type="text" 
@@ -222,13 +224,17 @@
                                         class="form-input"
                                         placeholder="Ej: 2"
                                         min="0"
-                                        max="5"
+                                        max="4"
                                         required>
                                 </div>
                                 
                                 <button type="submit" class="submit-btn">Enviar Confirmación</button>
                             </form>
-                            
+
+                            <p class="rsvp-note scroll-animate" style="--delay: 0.35s;">
+                                Agradecemos tu comprensión, este es un evento solo para adultos.
+                            </p>
+
                             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
                             
                             <div id="thank-you-message" style="display:none;">
