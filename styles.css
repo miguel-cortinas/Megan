@@ -691,6 +691,7 @@ section {
     margin: 0;
 }
 
+/* Reemplázalo con esto */
 .rsvp-bg {
     background-size: cover;
     background-position: center;
@@ -703,6 +704,7 @@ section {
     margin: 0;
 }
 
+/* ESTA ES LA PARTE CLAVE */
 .rsvp-content {
     text-align: center;
     max-width: 500px;
@@ -713,20 +715,19 @@ section {
 }
 
 .rsvp-content p {
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: var(--white);
-    margin-bottom: 40px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    background: rgba(255, 255, 255, 0.15);
-    padding: 25px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.8;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-style: normal; /* Le quitamos la cursiva para que sea igual a la invitación */
+    max-width: 700px;
+    margin: 0 auto 40px auto;
 }
 
 .rsvp-buttons {
@@ -849,16 +850,6 @@ section {
     width: 100%;
 }
 
-/* Ajustes para la sección RSVP con el formulario */
-.rsvp-content p {
-    font-size: 1.2em; /* Ajusta el tamaño del texto introductorio si es necesario */
-    background: none;
-    padding: 0;
-    border-radius: 0;
-    backdrop-filter: none;
-    border: none;
-    font-style: normal;
-}
 
 /* =================================== */
 /* SECCIÓN UBICACIÓN */
