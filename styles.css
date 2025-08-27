@@ -696,10 +696,10 @@ section {
     background-position: center;
     background-attachment: fixed;
     position: relative;
-    padding: 80px 0;
+    padding: 80px 0; /* Un padding simple para dar espacio general */
     min-height: 70vh;
     display: flex;
-    align-items: center;
+    justify-content: center; 
     margin: 0;
 }
 
@@ -709,6 +709,7 @@ section {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    margin-top: 250px; /* <--- ¡AÑADE ESTA LÍNEA! */
 }
 
 .rsvp-content p {
