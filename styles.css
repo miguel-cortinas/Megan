@@ -713,6 +713,7 @@ section {
 
 .rsvp-content p {
     font-size: 1.3em;
+    color: var(--white);
     margin-bottom: 40px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     background: rgba(255, 255, 255, 0.15);
@@ -2428,7 +2429,7 @@ section {
     border-radius: 50px;
     max-width: 90%;
     margin: 30px auto 0 auto;
-    font-size: 8px;
+    font-size: 12px;
     font-style: italic;
     color: var(--primary-color);
     display: inline-flex;
