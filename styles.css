@@ -570,7 +570,7 @@ section {
     background-position: center;
     background-attachment: fixed;
     position: relative;
-    padding: 80px 0;
+    padding: 60px 0; /* CAMBIO: Reducido de 80px */
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -625,7 +625,7 @@ section {
     background-position: center;
     background-attachment: fixed;
     position: relative;
-    padding: 80px 0;
+    padding: 60px 0; /* CAMBIO: Reducido de 80px */
     min-height: 70vh;
     display: flex;
     align-items: flex-start;
@@ -691,41 +691,38 @@ section {
     margin: 0;
 }
 
-/* Reemplázalo con esto */
 .rsvp-bg {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
-    padding: 80px 0; /* Un padding simple para dar espacio general */
+    padding: 60px 0; /* CAMBIO: Reducido de 80px */
     min-height: 70vh;
     display: flex;
     justify-content: center; 
     margin: 0;
 }
 
-/* ESTA ES LA PARTE CLAVE */
 .rsvp-content {
     text-align: center;
     max-width: 500px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
-    margin-top: 250px; /* <--- ¡AÑADE ESTA LÍNEA! */
+    margin-top: 250px;
 }
 
 .rsvp-content p {
     font-size: 1.2em;
     color: var(--white);
     line-height: 1.8;
-    color: var(--white);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: var(--border-radius);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    font-style: normal; /* Le quitamos la cursiva para que sea igual a la invitación */
+    font-style: normal;
     max-width: 700px;
     margin: 0 auto 40px auto;
 }
@@ -857,7 +854,7 @@ section {
 
 .location-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-    padding: 80px 0;
+    padding: 60px 0; /* CAMBIO: Reducido de 80px */
     margin: 0;
 }
 
@@ -933,7 +930,7 @@ section {
 
 .dresscode-section {
     background: var(--white);
-    padding: 80px 0;
+    padding: 60px 0; /* CAMBIO: Reducido de 80px */
     margin: 0;
 }
 
@@ -996,7 +993,7 @@ section {
 
 .gifts-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-    padding: 80px 0;
+    padding: 60px 0; /* CAMBIO: Reducido de 80px */
     margin: 0;
 }
 
@@ -1078,7 +1075,7 @@ section {
 
 .dedication-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 50%, #f8f9fa 100%);
-    padding: 80px 0;
+    padding: 60px 0; /* CAMBIO: Reducido de 80px */
     margin: 0;
     position: relative;
 }
@@ -1290,7 +1287,7 @@ section {
 
 .gallery-section {
     background: linear-gradient(135deg, #f8f9fa 0%, #fff 50%, #f8f9fa 100%);
-    padding: 80px 0;
+    padding: 60px 0; /* CAMBIO: Reducido de 80px */
     margin: 0;
     position: relative;
     overflow: hidden;
@@ -1724,7 +1721,7 @@ section {
     .dresscode-section,
     .gifts-section,
     .gallery-section {
-        padding: 60px 0;
+        padding: 50px 0; /* CAMBIO: Reducido para móvil */
     }
 
     .hero-section,
@@ -1733,7 +1730,7 @@ section {
     .rsvp-bg {
         background-attachment: scroll;
         min-height: 60vh;
-        padding: 60px 0;
+        padding: 50px 0; /* CAMBIO: Reducido para móvil */
     }
 
     .invitation-content,
@@ -1816,13 +1813,13 @@ section {
     .dresscode-section,
     .gifts-section,
     .gallery-section {
-        padding: 50px 0;
+        padding: 40px 0; /* CAMBIO: Reducido para móvil pequeño */
     }
 
     .invitation-bg,
     .countdown-bg,
     .rsvp-bg {
-        padding: 50px 0;
+        padding: 40px 0; /* CAMBIO: Reducido para móvil pequeño */
     }
 
     .countdown-container {
@@ -2032,7 +2029,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 50px 0;
+    margin: 25px 0; /* CAMBIO: Reducido de 50px */
     padding: 0 20px;
     position: relative;
 }
@@ -2202,7 +2199,7 @@ section {
 
 @media (max-width: 768px) {
     .section-separator {
-        margin: 35px 0;
+        margin: 20px 0; /* CAMBIO: Reducido para móvil */
         padding: 0 15px;
     }
     
@@ -2234,7 +2231,7 @@ section {
 
 @media (max-width: 480px) {
     .section-separator {
-        margin: 25px 0;
+        margin: 15px 0; /* CAMBIO: Reducido para móvil pequeño */
     }
     
     .separator-line {
