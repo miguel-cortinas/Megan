@@ -340,11 +340,20 @@ function updateCountdown() {
     const now = new Date().getTime();
     const distance = eventDate - now;
 
+    // CAMBIO INICIA: Lógica mejorada para el estado del contador.
     if (distance < 0) {
         clearInterval(countdownInterval);
-        showCountdownFinished();
+        const oneDay = 1000 * 60 * 60 * 24;
+        // Si ha pasado más de un día desde el evento, muestra el mensaje de agradecimiento.
+        if (Math.abs(distance) > oneDay) {
+            showPartyOverMessage();
+        } else {
+            // Si es el día del evento, muestra el mensaje de celebración.
+            showCountdownFinished();
+        }
         return;
     }
+    // CAMBIO TERMINA
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -383,6 +392,20 @@ function showCountdownFinished() {
         `;
     }
 }
+
+// CAMBIO INICIA: Nueva función para el mensaje post-evento.
+function showPartyOverMessage() {
+    const countdownContainer = document.getElementById('countdown');
+    if (countdownContainer) {
+        countdownContainer.innerHTML = `
+            <div class="countdown-finished">
+                <h2>¡Gracias por haberme acompañado!</h2>
+                <p>Espero que hayas disfrutado la celebración tanto como yo.</p>
+            </div>
+        `;
+    }
+}
+// CAMBIO TERMINA
 
 // =================================== 
 // EFECTOS ADICIONALES
@@ -657,7 +680,13 @@ function scrollToGalleryItem(index) {
     
     if (galleryGrid && targetItem) {
         const itemWidth = targetItem.offsetWidth;
-        const gap = 25; // Gap entre items
+        
+        // CAMBIO INICIA: Eliminación del "magic number" para el gap.
+        // Lee el valor del 'gap' directamente desde las propiedades CSS del contenedor.
+        const gridStyle = window.getComputedStyle(galleryGrid);
+        const gap = parseFloat(gridStyle.getPropertyValue('gap')) || 25; // Usa 25 como fallback.
+        // CAMBIO TERMINA
+
         const scrollPosition = (itemWidth + gap) * index;
         
         galleryGrid.scrollTo({
