@@ -224,7 +224,7 @@ function openInvitation(letterOpening, mainContent, navbar) {
             }, 1500);
             
         }, 1000);
-    }, 1000);
+    }, 1500);
 }
 
 function startHeroAnimations() {
