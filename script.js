@@ -691,7 +691,7 @@ function setupGalleryScroll() {
     
     if (!galleryGrid) return;
     
-    let isScrolling = false;
+    let isScrolling;
     let scrollTimeout;
     
     galleryGrid.addEventListener('scroll', function() {
@@ -703,29 +703,45 @@ function setupGalleryScroll() {
         }, 150);
     });
     
-    // Soporte para touch/swipe
+    // --- INICIO DE LA SOLUCIÓN: Soporte para touch/swipe mejorado ---
     let startX = 0;
+    let startY = 0; // Guardamos la posición Y inicial para comparar la dirección del gesto.
+    let moveX = 0;
+    let moveY = 0;
     let isTouch = false;
     
     galleryGrid.addEventListener('touchstart', function(e) {
         startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY; // Guardamos la coordenada Y inicial.
         isTouch = true;
+        moveX = 0; // Reiniciamos el contador de movimiento.
+        moveY = 0; // Reiniciamos el contador de movimiento.
         stopGalleryAutoPlay();
     });
     
     galleryGrid.addEventListener('touchmove', function(e) {
         if (!isTouch) return;
-        e.preventDefault();
+
+        // Calculamos la distancia total del movimiento en X y Y.
+        moveX = e.touches[0].clientX - startX;
+        moveY = e.touches[0].clientY - startY;
+
+        // ¡Esta es la lógica clave!
+        // Solo prevenimos el scroll vertical si el movimiento horizontal es MAYOR que el vertical.
+        // Esto permite que el scroll de la página funcione si el gesto es principalmente hacia arriba o abajo.
+        if (Math.abs(moveX) > Math.abs(moveY)) {
+            e.preventDefault();
+        }
     });
     
     galleryGrid.addEventListener('touchend', function(e) {
         if (!isTouch) return;
         
-        const endX = e.changedTouches[0].clientX;
-        const diff = startX - endX;
-        
-        if (Math.abs(diff) > 50) { // Mínimo swipe distance
-            if (diff > 0) {
+        const diffX = startX - e.changedTouches[0].clientX;
+
+        // Nos aseguramos de que el gesto fue principalmente horizontal antes de cambiar de imagen.
+        if (Math.abs(diffX) > 50 && Math.abs(moveX) > Math.abs(moveY)) {
+            if (diffX > 0) { // Si la diferencia es positiva, el swipe fue hacia la izquierda.
                 navigateGallery('next');
             } else {
                 navigateGallery('prev');
@@ -735,6 +751,7 @@ function setupGalleryScroll() {
         isTouch = false;
         startGalleryAutoPlay();
     });
+    // --- FIN DE LA SOLUCIÓN ---
 }
 
 function updateCurrentIndexFromScroll() {
